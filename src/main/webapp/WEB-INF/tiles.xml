@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- Login -->
+    <definition name="Login" template="/WEB-INF/pages/Login.jsp"></definition>
+
+    <!-- Find -->
+    <definition name="Find" template="/WEB-INF/pages/Find.jsp">
+        <put-attribute name="_FindResult" value="/WEB-INF/pages/_FindResult.jsp" />
+    </definition>
+
+    <!-- _FindResult -->
+    <definition name="_FindResult" template="/WEB-INF/pages/_FindResult.jsp"></definition>
+</tiles-definitions>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>            
+<!DOCTYPE hibernate-mapping PUBLIC            
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">           
+            
+<hibernate-mapping>            
+ <!-- モデルとテーブルのマッピングの設定 -->           
+ <class name="G_T.OfficeSystem.model.HibProfileInfoModel" table="profile_info">           
+  <!-- プライマリーキーの設定 -->          
+  <id name="userId" type="string">          
+   <column name="user_id" />         
+  </id>          
+  <property name="nickName" type="string">          
+   <column name="nick_name" />         
+  </property>          
+  <property name="userName" type="string">          
+   <column name="user_name" />         
+  </property>          
+  <property name="birthday" type="string">          
+   <column name="birthday" />         
+  </property>          
+  <property name="sex" type="int">          
+   <column name="sex" />         
+  </property>          
+  <property name="postcode" type="string">          
+   <column name="postcode" />         
+  </property>          
+  <property name="address" type="string">          
+   <column name="address" />         
+  </property>          
+  <property name="tel" type="string">          
+   <column name="tel" />         
+  </property>          
+  <property name="hireDate" type="string">          
+   <column name="hire_date" />         
+  </property>          
+  <property name="affiliation" type="string">          
+   <column name="affiliation" />         
+  </property>          
+  <property name="position" type="string">          
+   <column name="position" />         
+  </property>          
+  <property name="hobby" type="string">          
+   <column name="hobby" />         
+  </property>          
+  <property name="specialSkill" type="string">          
+   <column name="special_skill" />         
+  </property>          
+  <property name="comment" type="string">          
+   <column name="comment" />         
+  </property>          
+  <property name="imageLink" type="string">          
+   <column name="image_link" />         
+  </property>          
+  <property name="updatetime" type="timestamp">          
+   <column name="updatetime" />         
+  </property>          
+  <property name="inserttime" type="timestamp">          
+   <column name="inserttime" />         
+  </property>          
+  <!-- 結合するテーブルとの関係とそのテーブルの設定 -->          
+  <one-to-one name="hibUserMasterModel" class="G_T.OfficeSystem.model.HibUserMasterModel" />          
+ </class>           
+</hibernate-mapping>            

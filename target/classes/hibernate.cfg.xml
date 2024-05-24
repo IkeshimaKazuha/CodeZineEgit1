@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>            
+<!DOCTYPE hibernate-configuration PUBLIC            
+ "-//Hibernate/Hibernate Configuration DTD 3.0//EN"           
+ "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd"> 
+ 
+<hibernate-configuration>            
+  <session-factory>
+  <!-- JDBCドライバーの設定 -->      
+ <property name="connection.driver_class">com.mysql.jdbc.Driver</property>   
+  <!-- 接続先のURL -->          
+ <property name="connection.url">jdbc:mysql://localhost:3306/csharp?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;zeroDateTimeBehavior=convertToNull</property>
+  <!-- ユーザー名 -->          
+  <property name="connection.username">root</property>          
+  <!-- パスワード -->          
+  <property name="connection.password">csharp</property>          
+  <!-- リレーショナルデータベースのSQL方言を吸収するための設定 -->          
+  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>          
+  <!-- 発行したSQLをコンソールに出力する設定 -->          
+  <property name="show_sql">true</property>          
+ 
+  <mapping resource="hibusermastermodel.hbm.xml"/>          
+  <mapping resource="hibprofileinfomodel.hbm.xml"/>          
+ </session-factory>           
+</hibernate-configuration>            

@@ -1,0 +1,109 @@
+* {
+	font-family: 'MS Mincho','MS PMincho','MS Gothic','MS PGothic', Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    height:100%;
+    background-color:#e9ebee;
+}
+
+body {
+	height:auto;
+    margin:8px;
+}
+
+.Title {
+	text-align:left;
+	font-size:25px;
+	font-weight:bold;
+}
+
+.TextBox {
+	color: #494949;
+	border: 1px solid #69A4D8;
+	border-radius: 5px;
+	height: 30px;
+	font-size: 18px;
+	padding-left:5px;
+	padding-right:5px;
+}
+
+.TextArea {
+	color: #494949;
+	border: 1px solid #69A4D8;
+	border-radius: 5px;
+	font-size: 18px;
+	padding-left:5px;
+	padding-right:5px;
+	resize:none;
+}
+
+.Button {
+	background-color: #5B9BD5;
+	color: white;
+	border: 1px solid #43729D;
+	border-radius: 5px;
+	height: 36px;
+	font-size: 18px;
+	font-weight:bold;
+}
+
+.ButtonDisable {
+	background-color: #dddddd;
+	color: white;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	height: 36px;
+	font-size: 18px;
+	font-weight:bold;
+}
+
+.ButtonDisable:hover {
+	cursor:pointer;
+}
+
+.Label {
+	color: #494949;
+	font-size: 18px;
+	text-align: left;
+}
+
+.Select {
+	color: #494949;
+	border: 1px solid #69A4D8;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	height: 30px;
+	font-size: 18px;
+}
+
+.TitleLine {
+	border-bottom:3px solid #5B9BD5;
+	width:100%;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+label {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 18px;
+	text-align:left;
+}
+
+
+tr {
+	height: 35px;
+	font-size: 18px;
+}
+
+td {
+	text-align: left;
+	width: auto;
+}
+
+a {
+	font-size:18px;
+}
+
