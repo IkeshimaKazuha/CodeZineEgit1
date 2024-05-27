@@ -42,16 +42,16 @@ public class ApplicationInfoModelDAO extends JdbcDaoSupport {
  }     
       
  public List<ApplicationInfoModel> ApplyUser(ApplicationConditionModel condition) { //「List」クラス     
-  String sql = UserInfoModelMapper.BASE_SQL + " and u.TYPE = 2 ";    //登録済のユーザーだけを取得する
+  String sql = UserInfoModelMapper.BASE_SQL ;    //登録済のユーザーだけを取得する
       
   if (condition != null) {    
       
 		if (condition.getApplyId() != null && !condition.getApplyId().equals("")) {
-			sql += " and u.USER_ID like '%" + condition.getApplyId() + "%'";
+			sql += " and APPLY_ID like '%" + condition.getApplyId() + "%'";
 		}
 
 		if (condition.getApplyStatus() != null && !condition.getApplyStatus().equals("")) {
-			sql += " and u.EMAIL like '%" + condition.getApplyStatus() + "%'";
+			sql += " and APPLY_STATUS like '%" + condition.getApplyStatus() + "%'";
 		}
 
 
@@ -66,4 +66,4 @@ public class ApplicationInfoModelDAO extends JdbcDaoSupport {
 
 }     
  }     
-      
+     
