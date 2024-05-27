@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //GetPageに利用するライブラリを追加
 import org.springframework.web.bind.annotation.RequestParam;
 
-import G_T.OfficeSystem.model.FindConditionModel;
+import G_T.OfficeSystem.model.ApplicationConditionModel;
+import G_T.OfficeSystem.model.ApplicationModel;
 @Controller
 public class ApplicationForUser {
  @Autowired
@@ -19,7 +20,7 @@ public class ApplicationForUser {
   return "ApplicationManage";
  }
  @RequestMapping(value = "/ApplicationManage", method = RequestMethod.POST)
- public String ApplicationManage(HttpSession session, FindConditionModel condition, Model model) {
+ public String ApplicationManage(HttpSession session, ApplicationConditionModel condition, Model model) {
   applicationModel.ApplyUser(condition);
   model.addAttribute("applicationModel", applicationModel);
   return ("_ApplicationList");

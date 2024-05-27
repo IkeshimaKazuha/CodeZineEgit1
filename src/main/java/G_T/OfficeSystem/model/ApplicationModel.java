@@ -17,10 +17,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
-import G_T.OfficeSystem.model.ApplicationConditionModel;
-import G_T.OfficeSystem.model.HibUserMasterModel;
-import G_T.OfficeSystem.model.UserInfoModelDAO;
-
 @Service
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ApplicationModel {
@@ -40,7 +36,7 @@ public class ApplicationModel {
  private String sortColumn;
 
  @Autowired
- private UserInfoModelDAO userInfoModelDAO;
+ private ApplicationInfoModelDAO applicationInfoModelDAO;
 
  public ApplicationModel() {
   showNumber = 10;
@@ -199,8 +195,8 @@ public class ApplicationModel {
     if (condition.getApplyId() != "") {
         criteria.add(Restrictions.like("applyId", "%" + condition.getApplyId() + "%"));
        }
-    if (condition.getApplyStatus() != "") {
-        criteria.add(Restrictions.like("applyStatus", "%" + condition.getApplyStatus() + "%"));
+    if (condition.getApplyStatus() !=null) {
+        criteria.add(Restrictions.eq("applyStatus", "%" + condition.getApplyStatus() + "%"));
        }
    }
 

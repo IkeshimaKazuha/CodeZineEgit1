@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<!-- モデルとテーブルのマッピングの設定 -->
+	<class name="G_T.OfficeSystem.model.HibApplicationInfoModel" table="application_info">
+		<!-- プライマリーキーの設定 -->
+		<id name="applyId" type="int">
+			<column name="APPLY_ID" />
+		</id>
+		<property name="applyStatus" type="int">
+			<column name="APPLY_STATUS" />
+		</property>
+		<property name="applyFile" type="string">
+			<column name="APPLY_FILE" />
+		</property>
+		<property name="title" type="string">
+			<column name="TITLE" />
+		</property>
+		<property name="applyTime" type="timestamp">
+			<column name="APPLY_TIME" />
+		</property>
+		<property name="approveTime" type="timestamp">
+			<column name="APPROVE_TIME" />
+		</property>
+		<property name="noticeMatter" type="string">
+			<column name="NOTICE_MATTER" />
+		</property>
+		<property name="userId" type="string">
+			<column name="USER_ID" />
+		</property>
+	</class>
+</hibernate-mapping>

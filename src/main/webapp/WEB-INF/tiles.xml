@@ -13,4 +13,12 @@
 
     <!-- _FindResult -->
     <definition name="_FindResult" template="/WEB-INF/pages/_FindResult.jsp"></definition>
+
+<!-- ApplicationManage -->
+	<definition name="_ApplicationManage" template="/WEB-INF/pages/ApplicationManage.jsp">
+		<put-attribute name="_ApplicationList" value="/WEB-INF/pages/_ApplicationList.jsp" />
+	</definition>
+
+	<!-- _ApplicationList -->
+	<definition name="_ApplicationList" template="/WEB-INF/pages/_ApplicationList.jsp"></definition>
 </tiles-definitions>
