@@ -46,8 +46,8 @@ public class ApplicationInfoModelDAO extends JdbcDaoSupport {
       
   if (condition != null) {    
       
-		if (condition.getApplyId() != null && !condition.getApplyId().equals("")) {
-			sql += " and APPLY_ID like '%" + condition.getApplyId() + "%'";
+		if (condition.getUserId() != null && !condition.getUserId().equals("")) {
+			sql += " and USER_ID like '%" + condition.getUserId() + "%'";
 		}
 
 		if (condition.getApplyStatus() != null && !condition.getApplyStatus().equals("")) {

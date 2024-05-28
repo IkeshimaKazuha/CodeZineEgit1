@@ -23,41 +23,54 @@ public class ApplicationModel {
 // private List<UserInfoModel> showUserList;
 
  //Hibernate対応
- private List<HibUserMasterModel> allUserList; //HibUserMasterModel
- private List<HibUserMasterModel> showUserList; //HibUserMasterModel
-
+ private List<HibApplicationInfoModel> allUserList; //HibUserMasterModel
+ private List<HibApplicationInfoModel> showUserList; //HibUserMasterModel
+ private int showNumber;
+ private int currentPage;
+ private String sortOrder;
+ private String sortColumn;
 
 
  @Autowired
  private ApplicationInfoModelDAO applicationInfoModelDAO;
 
+ @Autowired
+
+	public ApplicationModel(){
+
+		showNumber = 10;
+		currentPage = 1;
+		sortOrder = "▼";
+		sortColumn = "申請ID";
+
+	}
 
 
-
- public List<HibUserMasterModel> getAllUserList() {
+ public List<HibApplicationInfoModel> getAllUserList() {
   return allUserList;
  }
- public void setAllUserList(List<HibUserMasterModel> allUserList) {
+ public void setAllUserList(List<HibApplicationInfoModel> allUserList) {
   this.allUserList = allUserList;
  }
 
  //ユーザー情報を検索し、検索結果一覧に設定する
  public void ApplyUser(ApplicationConditionModel condition) {
   //setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
-
   setAllUserList(FindUserByCondition(condition));
-
+	setAllUserList(FindUserByCondition(condition));
+	SortAll(sortColumn, sortOrder);
+	GetPage(showNumber, 1);
  }
 
- public List<HibUserMasterModel> getShowUserList() {
+ public List<HibApplicationInfoModel> getShowUserList() {
 	  return showUserList;
 	 }
-	 public void setShowUserList(List<HibUserMasterModel> showUserList) {
+	 public void setShowUserList(List<HibApplicationInfoModel> showUserList) {
 	  this.showUserList = showUserList;
 	 }
 
 
- public List<HibUserMasterModel> FindUserByCondition(ApplicationConditionModel condition) {
+ public List<HibApplicationInfoModel> FindUserByCondition(ApplicationConditionModel condition) {
   Session session = null;
   try {
    session = sessionFactory.openSession();
@@ -90,5 +103,8 @@ public class ApplicationModel {
   finally {
    session.close();
   }
- }
+ this.sortColumn = sortColumn;
+	this.sortOrder = sortOrder;
+	GetPage(showNumber, 1);
+}
 }
