@@ -23,8 +23,8 @@ public class ApplicationModel {
 // private List<UserInfoModel> showUserList;
 
  //Hibernate対応
- private List<HibUserMasterModel> allUserList;
- private List<HibUserMasterModel> showUserList;
+ private List<HibUserMasterModel> allUserList; //HibUserMasterModel
+ private List<HibUserMasterModel> showUserList; //HibUserMasterModel
 
 
 
@@ -49,8 +49,12 @@ public class ApplicationModel {
 
  }
 
-
-
+ public List<HibUserMasterModel> getShowUserList() {
+	  return showUserList;
+	 }
+	 public void setShowUserList(List<HibUserMasterModel> showUserList) {
+	  this.showUserList = showUserList;
+	 }
 
 
  public List<HibUserMasterModel> FindUserByCondition(ApplicationConditionModel condition) {

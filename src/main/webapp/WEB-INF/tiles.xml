@@ -4,7 +4,7 @@
       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <!-- Login -->
-    <definition name="Login" template="/WEB-INF/pages/Login.jsp"></definition>
+    <definition name="Login" template="/WEB-INF/pages/Login.jsp" />
 
     <!-- Find -->
     <definition name="Find" template="/WEB-INF/pages/Find.jsp">
@@ -12,13 +12,14 @@
     </definition>
 
     <!-- _FindResult -->
-    <definition name="_FindResult" template="/WEB-INF/pages/_FindResult.jsp"></definition>
+    <definition name="_FindResult" template="/WEB-INF/pages/_FindResult.jsp" />
 
 <!-- ApplicationManage -->
-	<definition name="_ApplicationManage" template="/WEB-INF/pages/ApplicationManage.jsp">
+	<definition name="ApplicationManage" template="/WEB-INF/pages/ApplicationManage.jsp">
 		<put-attribute name="_ApplicationList" value="/WEB-INF/pages/_ApplicationList.jsp" />
 	</definition>
 
 	<!-- _ApplicationList -->
-	<definition name="_ApplicationList" template="/WEB-INF/pages/_ApplicationList.jsp"></definition>
+	<definition name="_ApplicationList" template="/WEB-INF/pages/_ApplicationList.jsp" />
+	
 </tiles-definitions>
