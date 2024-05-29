@@ -1,8 +1,6 @@
 package G_T.OfficeSystem.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -24,16 +22,16 @@ public class ApplicationModel {
 	//Hibernate対応
 	private List<HibApplicationInfoModel> allUserList; //HibUserMasterModel
 	private List<HibApplicationInfoModel> showUserList; //HibUserMasterModel
-	private int showNumber;
-	private int currentPage;
+/*	private int showNumber;
+	private int currentPage;*/
 
 
 	@Autowired
 	private ApplicationInfoModelDAO applicationInfoModelDAO;
 
 	public ApplicationModel() {
-		showNumber = 10;
-		currentPage = 1;
+/*		showNumber = 10;
+		currentPage = 1;*/
 
 
 	}
@@ -50,7 +48,7 @@ public class ApplicationModel {
 	public void ApplyUser(ApplicationConditionModel condition) {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
 		setAllUserList(ApplyUserByCondition(condition));
-		GetPage(showNumber, currentPage);
+	//	GetPage(showNumber, currentPage);
 	}
 
 	public List<HibApplicationInfoModel> ApplyUserByCondition(ApplicationConditionModel condition) {
@@ -105,7 +103,7 @@ public class ApplicationModel {
 		this.showUserList = showUserList;
 	}
 
-	public int getShowNumber() {
+/*	public int getShowNumber() {
 		return showNumber;
 	}
 
@@ -133,5 +131,5 @@ public class ApplicationModel {
 		this.showNumber = showNumber;
 		this.currentPage = currentPage;
 	 }
-
+*/
 }
