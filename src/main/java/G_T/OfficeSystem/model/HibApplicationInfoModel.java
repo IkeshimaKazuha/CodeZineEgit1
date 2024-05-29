@@ -4,14 +4,15 @@ import java.sql.Timestamp;
 
 
 public class HibApplicationInfoModel {
+	private String userId;
 	private Integer applyId;
-	private Integer applyStatus;
-	private String applyFile;
 	private String title;
+	private String applyType;
+	private String applyFile;
+	private String noticeMatter;
+	private Integer applyStatus;
 	private Timestamp applyTime;
 	private Timestamp approveTime;
-	private String noticeMatter;
-	private String userId;
 	private HibUserMasterModel hibUserMasterModel;
 
 	public HibApplicationInfoModel() {
@@ -20,28 +21,38 @@ public class HibApplicationInfoModel {
 
 
 	public HibApplicationInfoModel(
-			Integer applyId,
-			Integer applyStatus,
-			String applyFile,
-			String title,
 			String userId,
+			Integer applyId,
+			String title,
+			String applyType,
+			String applyFile,
+			String noticeMatter,
+			Integer applyStatus,
 			Timestamp applyTime,
 			Timestamp approveTime,
-			String noticeMatter,
 			HibUserMasterModel hibUserMasterModel) {
 
-
-		this.applyId = applyId;
-		this.applyStatus = applyStatus;
-		this.applyFile = applyFile;
-		this.title = title;
+		
 		this.userId = userId;
+		this.applyId = applyId;
+		this.title = title;
+		this.applyType = applyType;
+		this.applyFile = applyFile;
+		this.noticeMatter = noticeMatter;
+		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
-		this.noticeMatter = noticeMatter;
 		this.hibUserMasterModel = hibUserMasterModel;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 	public Integer getApplyId() {
 		return applyId;
 	}
@@ -50,14 +61,21 @@ public class HibApplicationInfoModel {
 		this.applyId = applyId;
 	}
 
-	public Integer getApplyStatus() {
-		return applyStatus;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setApplyStatus(Integer applyStatus) {
-		this.applyStatus = applyStatus;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
+	public String getApplyType() {
+		return applyType;
+	}
+	public void setApplyType(String applyType) {
+		this.applyType = applyType;		
+	}
+	
 	public String getApplyFile() {
 		return applyFile;
 	}
@@ -65,14 +83,21 @@ public class HibApplicationInfoModel {
 	public void setApplyFile(String applyFile) {
 		this.applyFile = applyFile;
 	}
-
-
-	public String getTitle() {
-		return title;
+	
+	public String getNoticeMatter() {
+		return noticeMatter;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setNoticeMatter(String noticeMatter) {
+		this.noticeMatter = noticeMatter;
+	}
+	
+	public Integer getApplyStatus() {
+		return applyStatus;
+	}
+
+	public void setApplyStatus(Integer applyStatus) {
+		this.applyStatus = applyStatus;
 	}
 
 	public Timestamp getApplyTime() {
@@ -91,21 +116,6 @@ public class HibApplicationInfoModel {
 		this.approveTime = approveTime;
 	}
 
-	public String getNoticeMatter() {
-		return noticeMatter;
-	}
-
-	public void setNoticeMatter(String noticeMatter) {
-		this.noticeMatter = noticeMatter;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public HibUserMasterModel getHibUserMasterModel() {
 		return hibUserMasterModel;

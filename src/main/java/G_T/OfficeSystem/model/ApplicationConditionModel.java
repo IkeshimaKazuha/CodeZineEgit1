@@ -2,8 +2,6 @@ package G_T.OfficeSystem.model;
 
 public class ApplicationConditionModel {
 	private String userId;
-	private String email;
-
 	private String applyId;
 	private Integer applyStatus;
 	private String title;
@@ -11,7 +9,7 @@ public class ApplicationConditionModel {
 	private String applyFile;
 	private String noticeMatter;
 	private String applyTime;
-	private String approve;
+	private String approveTime;
 	private String remandTime;
 
 	public ApplicationConditionModel() {
@@ -20,8 +18,6 @@ public class ApplicationConditionModel {
 
 	public ApplicationConditionModel(
 			String userId,
-			String email,
-
 			String applyId,
 			Integer applyStatus,
 			String title,
@@ -29,12 +25,9 @@ public class ApplicationConditionModel {
 			String applyFile,
 			String noticeMatter,
 			String applyTime,
-			String approve,
-			String remandTime
-			) {
+			String approveTime,
+			String remandTime) {
 		this.userId = userId;
-		this.email = email;
-
 		this.applyId = applyId;
 		this.applyStatus = applyStatus;
 		this.title = title;
@@ -42,24 +35,18 @@ public class ApplicationConditionModel {
 		this.applyFile = applyFile;
 		this.noticeMatter = noticeMatter;
 		this.applyTime = applyTime;
-		this.approve = approve;
+		this.approveTime = approveTime;
 		this.remandTime = remandTime;
 	}
 
-	 public String getUserId() {  
-		  return userId; 
-		 }  
-		 public void setUserId(String userId){  
-		  this.userId = userId; 
-		 }  
-		   
-		 public String getEmail() {  
-		  return email; 
-		 }  
-		 public void setEmail(String email){  
-		  this.email = email; 
-		 }
-	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public String getApplyId() {
 		return applyId;
 	}
@@ -76,7 +63,7 @@ public class ApplicationConditionModel {
 		this.applyStatus = applyStatus;
 	}
 
-	public String getTitel() {
+	public String getTitle() {
 		return title;
 	}
 
@@ -91,6 +78,7 @@ public class ApplicationConditionModel {
 	public void setApplyType(String applyType) {
 		this.applyType = applyType;
 	}
+
 	public String getApplyFile() {
 		return applyFile;
 	}
@@ -98,7 +86,7 @@ public class ApplicationConditionModel {
 	public void setApplyFile(String applyFile) {
 		this.applyFile = applyFile;
 	}
-	
+
 	public String getNoticeMatter() {
 		return noticeMatter;
 	}
@@ -106,7 +94,7 @@ public class ApplicationConditionModel {
 	public void setNoticeMatter(String noticeMatter) {
 		this.noticeMatter = noticeMatter;
 	}
-	
+
 	public String getApplyTime() {
 		return applyTime;
 	}
@@ -114,14 +102,15 @@ public class ApplicationConditionModel {
 	public void setApplyTime(String applyTime) {
 		this.applyTime = applyTime;
 	}
-	public String getApprove() {
-		return approve;
+
+	public String getApproveTime() {
+		return approveTime;
 	}
 
-	public void setApprove(String approve) {
-		this.approve = approve;
+	public void setApprove(String approveTime) {
+		this.approveTime = approveTime;
 	}
-	
+
 	public String getRemandTime() {
 		return remandTime;
 	}
@@ -129,5 +118,5 @@ public class ApplicationConditionModel {
 	public void setRemandTime(String remandTime) {
 		this.remandTime = remandTime;
 	}
-	
+
 }

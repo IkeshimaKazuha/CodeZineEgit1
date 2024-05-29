@@ -19,6 +19,9 @@
 		<property name="title" type="string">
 			<column name="TITLE" />
 		</property>
+		<property name="applyType" type="string">
+			<column name="APPLY_TYPE" />
+		</property>
 		<property name="applyTime" type="timestamp">
 			<column name="APPLY_TIME" />
 		</property>
@@ -31,5 +34,6 @@
 		<property name="userId" type="string">
 			<column name="USER_ID" />
 		</property>
+		<one-to-one name="hibUserMasterModel" class="G_T.OfficeSystem.model.HibUserMasterModel" />
 	</class>
 </hibernate-mapping>

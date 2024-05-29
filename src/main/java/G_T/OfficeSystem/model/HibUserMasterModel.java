@@ -15,6 +15,7 @@ public class HibUserMasterModel {
 	private HibProfileInfoModel hibProfileInfoModel;
 	private HibApplicationInfoModel hibApplicationInfoModel;
 
+
 	public HibUserMasterModel() {
 
 	}
@@ -43,6 +44,7 @@ public class HibUserMasterModel {
 		this.type = type;
 		this.hibProfileInfoModel = hibProfileInfoModel;
 		this.hibApplicationInfoModel = hibApplicationInfoModel;
+
 	}
 
 	public String getUserId() {
@@ -124,7 +126,6 @@ public class HibUserMasterModel {
 	public void setHibProfileInfoModel(HibProfileInfoModel hibProfileInfoModel) {
 		this.hibProfileInfoModel = hibProfileInfoModel;
 	}
-
 	public HibApplicationInfoModel getHibApplicationInfoModel() {
 		return hibApplicationInfoModel;
 	}

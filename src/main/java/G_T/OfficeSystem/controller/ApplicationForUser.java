@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import G_T.OfficeSystem.model.ApplicationConditionModel;
 import G_T.OfficeSystem.model.ApplicationModel;
@@ -27,4 +28,18 @@ public class ApplicationForUser {
 		model.addAttribute("applicationModel", applicationModel);
 		return ("_ApplicationList");
 	}
+
+
+	//書類申請画面　ページ取得
+	@RequestMapping(value="/GetPageApplication", method = RequestMethod.POST)
+	public String GetPage(HttpSession session,  Model model
+			, @RequestParam int showNumber
+			, @RequestParam int currentPage){
+
+		applicationModel.GetPage(showNumber, currentPage);
+		model.addAttribute("applicationModel", applicationModel);
+
+		return ("_ApplicationList");
+	}
+
 }
