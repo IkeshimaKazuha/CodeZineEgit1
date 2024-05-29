@@ -13,7 +13,6 @@ public class HibApplicationInfoModel {
 	private Integer applyStatus;
 	private Timestamp applyTime;
 	private Timestamp approveTime;
-	private HibUserMasterModel hibUserMasterModel;
 
 	public HibApplicationInfoModel() {
 
@@ -29,8 +28,8 @@ public class HibApplicationInfoModel {
 			String noticeMatter,
 			Integer applyStatus,
 			Timestamp applyTime,
-			Timestamp approveTime,
-			HibUserMasterModel hibUserMasterModel) {
+			Timestamp approveTime
+			) {
 
 		
 		this.userId = userId;
@@ -42,7 +41,6 @@ public class HibApplicationInfoModel {
 		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
-		this.hibUserMasterModel = hibUserMasterModel;
 	}
 
 	public String getUserId() {
@@ -114,14 +112,5 @@ public class HibApplicationInfoModel {
 
 	public void setApproveTime(Timestamp approveTime) {
 		this.approveTime = approveTime;
-	}
-
-
-	public HibUserMasterModel getHibUserMasterModel() {
-		return hibUserMasterModel;
-	}
-
-	public void setHibUserMasterModel(HibUserMasterModel hibUserMasterModel) {
-		this.hibUserMasterModel = hibUserMasterModel;
 	}
 }

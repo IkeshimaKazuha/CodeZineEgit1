@@ -13,9 +13,7 @@ public class HibUserMasterModel {
 	private Timestamp registerLinkTime;
 	private Integer type;
 	private HibProfileInfoModel hibProfileInfoModel;
-	private HibApplicationInfoModel hibApplicationInfoModel;
-
-
+	
 	public HibUserMasterModel() {
 
 	}
@@ -30,8 +28,7 @@ public class HibUserMasterModel {
 			String registerLink,
 			Timestamp registerLinkTime,
 			Integer type,
-			HibProfileInfoModel hibProfileInfoModel,
-			HibApplicationInfoModel hibApplicationInfoModel) {
+			HibProfileInfoModel hibProfileInfoModel) {
 
 		this.userId = userId;
 		this.password = password;
@@ -43,7 +40,6 @@ public class HibUserMasterModel {
 		this.registerLinkTime = registerLinkTime;
 		this.type = type;
 		this.hibProfileInfoModel = hibProfileInfoModel;
-		this.hibApplicationInfoModel = hibApplicationInfoModel;
 
 	}
 
@@ -125,12 +121,5 @@ public class HibUserMasterModel {
 
 	public void setHibProfileInfoModel(HibProfileInfoModel hibProfileInfoModel) {
 		this.hibProfileInfoModel = hibProfileInfoModel;
-	}
-	public HibApplicationInfoModel getHibApplicationInfoModel() {
-		return hibApplicationInfoModel;
-	}
-
-	public void setHibApplicationInfoModel(HibApplicationInfoModel hibApplicationInfoModel) {
-		this.hibApplicationInfoModel = hibApplicationInfoModel;
 	}
 }

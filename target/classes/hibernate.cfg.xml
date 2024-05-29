@@ -28,7 +28,6 @@
 
   <mapping resource="hibusermastermodel.hbm.xml"/>
   <mapping resource="hibprofileinfomodel.hbm.xml"/>
-
   <mapping resource="hibapplicationinfomodel.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

@@ -34,6 +34,5 @@
 		<property name="userId" type="string">
 			<column name="USER_ID" />
 		</property>
-		<one-to-one name="hibUserMasterModel" class="G_T.OfficeSystem.model.HibUserMasterModel" />
 	</class>
 </hibernate-mapping>
