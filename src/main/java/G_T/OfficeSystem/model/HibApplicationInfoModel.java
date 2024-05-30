@@ -14,6 +14,7 @@ public class HibApplicationInfoModel {
 	private Timestamp applyTime;
 	private Timestamp approveTime;
 
+
 	public HibApplicationInfoModel() {
 
 	}
@@ -29,6 +30,7 @@ public class HibApplicationInfoModel {
 			Integer applyStatus,
 			Timestamp applyTime,
 			Timestamp approveTime
+
 			) {
 
 		
@@ -41,6 +43,7 @@ public class HibApplicationInfoModel {
 		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
+
 	}
 
 	public String getUserId() {

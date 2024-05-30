@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -20,8 +18,8 @@ public class ApplicationModel {
 	@Autowired
 	private SessionFactory sessionFactory;
 	//Hibernate対応
-	private List<HibApplicationInfoModel> allUserList; //HibUserMasterModel
-	private List<HibApplicationInfoModel> showUserList; //HibUserMasterModel
+	private List<HibApplicationInfoModel> allApplicationList; //HibUserMasterModel
+	private List<HibApplicationInfoModel> showApplicationList; //HibUserMasterModel
 /*	private int showNumber;
 	private int currentPage;*/
 
@@ -36,18 +34,18 @@ public class ApplicationModel {
 
 	}
 
-	public List<HibApplicationInfoModel> getAllUserList() {
-		return allUserList;
+	public List<HibApplicationInfoModel> getAllApplicationList() {
+		return allApplicationList;
 	}
 
-	public void setAllUserList(List<HibApplicationInfoModel> allUserList) {
-		this.allUserList = allUserList;
+	public void setAllApplicationList(List<HibApplicationInfoModel> allApplicationList) {
+		this.allApplicationList = allApplicationList;
 	}
 
 	//ユーザー情報を検索し、検索結果一覧に設定する
 	public void ApplyUser(ApplicationConditionModel condition) {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
-		setAllUserList(ApplyUserByCondition(condition));
+		setAllApplicationList(ApplyUserByCondition(condition));
 	//	GetPage(showNumber, currentPage);
 	}
 
@@ -55,11 +53,10 @@ public class ApplicationModel {
 		Session session = null;
 		try {
 			session = sessionFactory.openSession();
-			Criteria criteria = session.createCriteria(HibUserMasterModel.class)
-					.createAlias("hibApplicationInfoModel", "a", JoinType.INNER_JOIN);
-			criteria.add(Restrictions.eqProperty("a.userId", "userId"));
+			Criteria criteria = session.createCriteria(HibApplicationInfoModel.class);
+			//criteria.add(Restrictions.ilike(condition.getApplyStatus(),"applyStatus"));
 
-			if (condition != null) {
+			/*if (condition != null) {
 				if (condition.getUserId() != null && !condition.getUserId().equals("")) {
 					criteria.add(Restrictions.like("userId", "%" + condition.getUserId() + "%"));
 				}
@@ -84,9 +81,9 @@ public class ApplicationModel {
 				if (condition.getApproveTime() != null && !condition.getApproveTime().equals("")) {
 					criteria.add(Restrictions.like("approveTime", "%" + condition.getApproveTime() + "%"));
 				}
-			}
-
-			return criteria.list();
+			}*/
+			List<HibApplicationInfoModel> results = criteria.list();
+		return criteria.list();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return null;
@@ -95,12 +92,12 @@ public class ApplicationModel {
 		}
 	}
 
-	public List<HibApplicationInfoModel> getShowUserList() {
-		return showUserList;
+	public List<HibApplicationInfoModel> getShowApplicationList() {
+		return showApplicationList;
 	}
 
-	public void setShowUserList(List<HibApplicationInfoModel> showUserList) {
-		this.showUserList = showUserList;
+	public void setShowUserList(List<HibApplicationInfoModel> showApplicationList) {
+		this.showApplicationList = showApplicationList;
 	}
 
 /*	public int getShowNumber() {

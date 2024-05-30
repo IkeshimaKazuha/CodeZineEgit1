@@ -10,6 +10,7 @@
 	<head>
 		<title>書類申請</title>
 	 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+		 <link type="text/css" rel="new stylesheet" href="${pageContext.request.contextPath}/css/Site.css" />
 	 	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 		<style>
 
@@ -147,8 +148,8 @@
 				<form method="post" action="ApplicationManage" id="Form1">
 					<div class="row div1">
 						<div class="col-xs-offset-1 col-xs-2 div状態">状態</div>
-						<select class="col-xs-2 option select1" id="status" name="status">
-							<option value="5">すべて</option>
+						<select class="col-xs-2 option select1" id="cbx状態" name="applyStatus">
+							<option value="_">すべて</option>
 							<option value="0" selected>未承認</option>
 							<option value="1" >承認済み</option>
 							<option value="2">自分差し戻し</option>
@@ -160,64 +161,7 @@
 				</form>
 			</div>
 			<div id="container">
-<!-- 				<table class="table" border="3">
-					<tr>
-						<td colspan="7" class="td1">
-							<div class="tablebox1">
-								<div class="SOUKENSU">総件数:0件</div>
-								<div class="tablebox2">
-									<div class="HYOJI">表示件数:</div>
-									<select class="HYOJIOPTION">
-										<option value="0">すべて</option>
-										<option value="5">5件</option>
-										<option value="10" selected>10件</option>
-										<option value="20">20件</option>
-										<option value="50">50件</option>
-										<option value="100">100件</option>
-									</select>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr class="tr1">
-						<th width="100px">
-							<div align="center">状態</div>
-						</th>
-						<th width="200px">
-							<div align="center">申請ID</div>
-						</th>
-						<th width="250px">
-							<div align="center">申請書類</div>
-						</th>
-						<th width="250px">
-							<div align="center">タイトル</div>
-						</th>
-						<th width="200px">
-							<div align="center">申請日</div>
-						</th>
-						<th width="200px">
-							<div align="center">承認日</div>
-						</th>
-						<th width="250px">
-							<div align="center" >連絡事項</div>
-						</th>
-					</tr>
-					<tr>
-						<td><br></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td><br></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td><br></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td><br></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td><br></td><td></td><td></td><td></td><td></td><td></td><td></td>
-					</tr>
-				</table> -->
+				<tiles:insertAttribute name="_ApplicationList" />
 			</div>
 		</div>
 		<script type="text/ecmascript">
@@ -238,147 +182,6 @@
 				});
 			};
 
-			$(document).on('change', "[id^='status']", function () {
-				$.ajax({
-					url: "${pageContext.request.contextPath}/ApplicationManage",
-					type: "post",
-					data: $("#Form1").serialize(),
-					success: function (data) {
-						$("#container").html(data);
-					},
-					error: function(err){
-						alert(err.responseText);
-						alert("システムエラーが発生しました..");
-					}
-				});
-			});
-
-
-			$(document).on('click', "[id='nextPage']", function () {
-				event.preventDefault();
-				var selecting = $('#currentPage').val();
-				var maxvalue = $('#currentPage option:last-child').val();
-
-				if (selecting == maxvalue) {
-					return;
-				}
-
-				$('#currentPage').val(Number(selecting) + 1);
-				$('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle.png");
-
-
-				$.ajax({
-					url: "${pageContext.request.contextPath}/GetPageApplication",
-					type: "post",
-					data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) + 1) },
-					success: function (data) {
-						$("#container").html(data);
-					},
-					error: function () {
-						alert("システムエラーが発生しました");
-					}
-				});
-			});
-
-			$(document).on('click', "[id='previousPage']", function () {
-				event.preventDefault();
-				var selecting = $('#currentPage').val();
-
-				if (selecting == 1) {
-					return;
-				}
-
-				$('#currentPage').val(Number(selecting) - 1);
-				$('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");
-
-
-				$.ajax({
-					url: "${pageContext.request.contextPath}/GetPageApplication",
-					type: "post",
-					data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) - 1) },
-					success: function (data) {
-						$("#container").html(data);
-					},
-					error: function () {
-						alert("システムエラーが発生しました");
-					}
-				});
-			});
-
-			$(document).on('change', "[id='currentPage']", function () {
-				if ($('#totalCount').text() == "0") {
-					return;
-				}
-				$.ajax({
-					url: "${pageContext.request.contextPath}/GetPageApplication",
-					type: "post",
-					data: { showNumber:$("#showNumber").val(), currentPage: $('#currentPage').val() },
-					success: function (data) {
-						$("#container").html(data);
-					},
-					error: function () {
-						alert("システムエラーが発生しました");
-					}
-				});
-			});
-
-			$(document).on('change', "[id^='showNumber']", function () {
-				if ($('#totalCount').text() == "0") {
-					return;
-				}
-				$.ajax({
-					url: "${pageContext.request.contextPath}/GetPageApplication",
-					type: "post",
-					data: { showNumber:$("#showNumber").val(), currentPage: 1 },
-					success: function (data) {
-
-						$("#container").html(data);
-					},
-					error: function (err) {
-						alert(err.responseText);
-						alert("システムエラーが発生しました");
-					}
-				});
-			});
-
-			function sort(obj) {
-				if ($('#totalCount').text() == "0") {
-					return;
-				}
-				var span = $(obj).find("span");//spanの要素
-				var sortOrder = span.text().trim();//今の▲の状態
-				var sortColumn = $(obj).text().replace("▲", "").replace("▼", "").trim();//今のユーザーIDとか
-
-				//タイトルからソート順のマークを削除する　更新前に前を消しておく
-				$("#searchList").find("tr:nth-child(1) td").each(function () {
-					$(this).find("span").text("");
-				});
-
-				if (sortOrder == "" || sortOrder == "▼") {
-					sortOrder = "▲";
-				}
-				else {
-					sortOrder = "▼";
-				}
-
-				$('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle_disable.png");
-				$('#currentPage').val(1);
-				$('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");
-
-
-				$.ajax({
-					url: "${pageContext.request.contextPath}/SortApplication",
-					type: "post",
-					data: {sortColumn:sortColumn,sortOrder:sortOrder},
-					success: function (data) {
-						$("#container").html(data);//containerの中身更新？
-					},
-					error: function (err) {
-						console.error(err.responseText);
-						//alert("システムエラーが発生しました");
-					}
-				});
-			}
 		</script>
 	</body>
 
