@@ -10,7 +10,7 @@
 		<id name="applyId" type="int">
 			<column name="APPLY_ID" />
 		</id>
-		<property name="applyStatus" type="int">
+		<property name="applyStatus" type="string">
 			<column name="APPLY_STATUS" />
 		</property>
 		<property name="applyFile" type="string">
@@ -33,6 +33,9 @@
 		</property>
 		<property name="userId" type="string">
 			<column name="USER_ID" />
+		</property>
+				<property name="remandTime" type="timestamp">
+			<column name="REMAND_TIME" />
 		</property>
 	</class>
 </hibernate-mapping>

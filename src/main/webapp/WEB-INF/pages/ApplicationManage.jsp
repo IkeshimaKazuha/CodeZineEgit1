@@ -84,20 +84,118 @@
 			.button{
 			}
 
+			.TopMenuContainer {
+            width: 100%;
+            height: 50px;
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #5B9BD5;
+            z-index:100;
+        }
+        .TopMenu {
+            width: 1012px;
+            height: 50px;
+            display: block;
+            position: fixed;
+            top: 0;
+            background-color: #5B9BD5;
+            z-index:101;
+        }
 
+        .TopMenuTitle {
+            float:left;
+            padding-top:5px;
+        }
 
+        .TopMenuSettingImgContainer {
+            float:right;
+            width:40px;
+            height:100%;
+            right:0px;
+        }
 
+        .TopMenuDropDownComandContainer {
+            float:right;
+            height:100%;
+        }
 
+        .TopMenuDropDownComandContainer:hover .TopMenuComandContent {
+            display:block !important;
+        }
 
+        .TopMenuComandContent{
+            position:absolute;
+            top:45px;
+            right:0px;
+            width:100px;
+            font-size:12px;
+            padding:3px;
+            border:1px solid #0094ff;
+            display:none !important;
+            background-color:white;
+            z-index:90;
+        }
 
+        .TopMenuSettingImg {
+            position:absolute;
+            width:40px;
+            height:40px;
+            right:0px;
+        }
 
+        .TopMenuNick {
+            float:right;
+            font-size:18px;
+            padding-top:15px;
+        }
 
+        .LeftMenu {
+            width: 200px;
+            height: 100vh;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            top: 60px;
+            padding: 10px;
+            z-index:90;
+        }
 
+        .RightMenu {
+            width: 0px;
+            height: 100vh;
+            background-color: #ffffff;
+            color: white;
+            position: fixed;
+            right: 0;
+            top: 60px;
+            padding: 10px;
+            z-index:90;
+        }
 
+        .TopContainer {
+            width: 1012px;
+            height:50xp;
+            position: relative;
+            left: calc(50% - 506px);  /* 回答3・追加：画面を中央に寄せる */
+        }
 
+        .MidContainer {
+            width: 802px;
+            height: auto;
+            min-height: 100%;
+            display: inline-block;
+            margin-top: 60px;
+            margin-left: 210px;
+            margin-right: 0px;
+            margin-bottom: 0;
+            background-color: #ffffff;
+            padding: 10px;
+            /* overflow-y:scroll; */ /* 回答1・削除：白部分の縦スクロールバーを無くす */
+        }
 
-
-
+		
 
 			.row{
 				margin-bottom:10px;
@@ -142,6 +240,38 @@
 		</style>
 	</head>
 	<body>
+		<div class="TopContainer">
+			<div class="TopMenuContainer PageHeader">
+			</div>
+			<div id="top" class="TopMenu PageHeader">
+				<div class="TopMenuTitle">
+					書類申請
+				</div>
+	
+	<div class="TopMenuSettingImgContainer">
+		<div class="TopMenuDropDownComandContainer">
+			<!-- 回答5・変更・開始：トップバーの画像を設定 -->
+			<input type="image" class="TopMenuSettingImg v_middle_a" src="./img/setting.png">
+			<!-- 回答5・変更・完了：トップバーの画像を設定 -->
+			<div class="TopMenuComandContent">
+				<a href="/BaseInformation/Index" style="font-size:12px">基本情報</a><br>
+				<a href="/ProfileInformation/Index" style="font-size:12px">プロファイル</a><br>
+				<div class="TitleLine"> </div>
+				<a href="/Authentication/Logout" style="font-size:12px">ログアウト</a>
+			</div>
+		</div>
+	
+	</div>
+	<div class="TopMenuNick">
+		ニックネーム
+		権限
+	</div>
+			</div>
+	
+	<div class="TitleLine" style="width:100%;margin-top:10px"></div>
+	
+
+			</div>
 		<div class="background">
 			<div class="container1">
 				<div class="h1"><h1 id="h2">申請一覧</h1></div>
@@ -149,7 +279,7 @@
 					<div class="row div1">
 						<div class="col-xs-offset-1 col-xs-2 div状態">状態</div>
 						<select class="col-xs-2 option select1" id="cbx状態" name="applyStatus">
-							<option value="_">すべて</option>
+							<option value="">すべて</option>
 							<option value="0" selected>未承認</option>
 							<option value="1" >承認済み</option>
 							<option value="2">自分差し戻し</option>
@@ -181,6 +311,22 @@
 					}
 				});
 			};
+
+			$(document).on('change', "[id^='cbx状態']", function () {
+				$.ajax({
+					url: "${pageContext.request.contextPath}/ApplicationManage",
+					type: "post",
+					data: $("#Form1").serialize(),
+					success: function (data) {
+						$("#container").html(data);
+					},
+					error: function(err){
+						alert(err.responseText);
+						alert("システムエラーが発生しました..");
+					}
+				});
+			});
+
 
 		</script>
 	</body>

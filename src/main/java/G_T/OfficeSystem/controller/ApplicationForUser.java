@@ -27,4 +27,27 @@ public class ApplicationForUser {
 		model.addAttribute("applicationModel", applicationModel);
 		return ("_ApplicationList");
 	}
+	
+	//書類申請画面　ソート
+/*		@RequestMapping(value="/Sort", method = RequestMethod.POST)
+		public String Sort(HttpSession session,  Model model
+				, @RequestParam String sortColumn
+				, @RequestParam String sortOrder){
+
+			applicationModel.SortAll(sortColumn, sortOrder);//sort
+			model.addAttribute("applicationModel", applicationModel);
+			return ("_ApplicationList");
+		}
+
+		//書類申請画面　ページ取得
+		@RequestMapping(value="/GetPage", method = RequestMethod.POST)
+		public String GetPage(HttpSession session,  Model model
+				, @RequestParam int showNumber
+				, @RequestParam int currentPage){
+
+			applicationModel.GetPage(showNumber, currentPage);
+			model.addAttribute("applicationModel", applicationModel);
+
+			return ("_ApplicationList");
+		}*/
 }

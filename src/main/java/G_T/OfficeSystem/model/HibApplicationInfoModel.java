@@ -10,10 +10,10 @@ public class HibApplicationInfoModel {
 	private String applyType;
 	private String applyFile;
 	private String noticeMatter;
-	private Integer applyStatus;
+	private String applyStatus;
 	private Timestamp applyTime;
 	private Timestamp approveTime;
-
+	private Timestamp remandTime;
 
 	public HibApplicationInfoModel() {
 
@@ -27,10 +27,10 @@ public class HibApplicationInfoModel {
 			String applyType,
 			String applyFile,
 			String noticeMatter,
-			Integer applyStatus,
+			String applyStatus,
 			Timestamp applyTime,
-			Timestamp approveTime
-
+			Timestamp approveTime,
+			Timestamp remandTime
 			) {
 
 		
@@ -43,7 +43,7 @@ public class HibApplicationInfoModel {
 		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
-
+		this.remandTime = remandTime;
 	}
 
 	public String getUserId() {
@@ -93,11 +93,11 @@ public class HibApplicationInfoModel {
 		this.noticeMatter = noticeMatter;
 	}
 	
-	public Integer getApplyStatus() {
+	public String getApplyStatus() {
 		return applyStatus;
 	}
 
-	public void setApplyStatus(Integer applyStatus) {
+	public void setApplyStatus(String applyStatus) {
 		this.applyStatus = applyStatus;
 	}
 
@@ -116,4 +116,13 @@ public class HibApplicationInfoModel {
 	public void setApproveTime(Timestamp approveTime) {
 		this.approveTime = approveTime;
 	}
+	
+	public Timestamp getRemandTime() {
+		return remandTime;
+	}
+
+	public void setRemandTime(Timestamp remandTime) {
+		this.remandTime = remandTime;
+	}
+
 }

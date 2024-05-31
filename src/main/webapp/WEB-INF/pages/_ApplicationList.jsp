@@ -71,7 +71,11 @@
 						<c:forEach var="item" items="${array}" >
 				<td onclick="sort(this)" align="center">
 							${item}
-
+							<span>   
+								<c:if test="${findModel.getSortColumn() == item}">  
+								   <br />${findModel.getSortOrder()} 
+								  </c:if>  
+							  </span>  
 						</td>
 						</c:forEach>
 					</tr>
@@ -79,10 +83,29 @@
 					<c:if test="${applicationModel.getAllApplicationList() != null}">
 							<c:set var="i" value="0" scope="request" />
 
-							<c:forEach var="item" items="${applicationModel.getShowApplicationList() }">
+							<c:forEach var="item" items="${applicationModel.getAllApplicationList()}">
 								<c:set var="i" value="${i+1}" scope="request"/>
 							 <tr onclick="sendData(this)">
-								<td>${item.getApplyStatus()}</td>
+								<td class="TextCenter"><c:choose>
+									<c:when test="${item.getApplyStatus() == 0 }">
+										<c:out value="未承認" />
+									</c:when>
+									<c:when test="${item.getApplyStatus() == 1 }">
+										<c:out value="承認済" />
+									</c:when>
+									<c:when test="${item.getApplyStatus() == 2 }">
+										<c:out value="自分差し戻し" />
+									</c:when>
+									<c:when test="${item.getApplyStatus() == 3 }">
+										<c:out value="差し戻し" />
+									</c:when>
+									<c:when test="${item.getApplyStatus() == 4 }">
+										<c:out value="削除済" />
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose></td>
+
 								<td>${item.getApplyId()}</td>
 								<td>${item.getApplyFile()}</td>
 								<td>${item.getTitle()}</td>
@@ -99,5 +122,5 @@
 				</table>
 			</div>
 		</body>
-	
+			
 	
