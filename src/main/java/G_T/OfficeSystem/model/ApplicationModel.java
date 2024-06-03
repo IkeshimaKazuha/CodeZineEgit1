@@ -26,16 +26,16 @@ public class ApplicationModel {
 	private List<HibApplicationInfoModel> allApplicationList; //HibUserMasterModel
 	private List<HibApplicationInfoModel> showApplicationList; //HibUserMasterModel
 
-	private int showNumber;
-	private int currentPage;
+	private int showNumber2;
+	private int currentPage2;
 	private String sortOrder;
 	private String sortColumn;
 	@Autowired
 	private ApplicationInfoModelDAO applicationInfoModelDAO;
 
 	public ApplicationModel() {
-		showNumber = 10;
-		currentPage = 1;
+		showNumber2 = 10;
+		currentPage2 = 1;
 		sortOrder = "▲";
 		sortColumn = "申請ID";
 	}
@@ -53,7 +53,7 @@ public class ApplicationModel {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
 		setAllApplicationList(ApplyUserByCondition(condition));
 		SortAll2(sortColumn, sortOrder);
-		GetPage2(showNumber, currentPage);
+		GetPage2(showNumber2, currentPage2);
 	}
 	public void SortAll2(String sortColumn, String sortOrder) {
 		Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>() {
@@ -85,12 +85,12 @@ public class ApplicationModel {
 		});
 		this.sortColumn = sortColumn;
 		this.sortOrder = sortOrder;
-		GetPage2(showNumber, 1);
+		GetPage2(showNumber2, 1);
 
 	}
 
-	public void GetPage2(int showNumber, int currentPage) {
-		if (showNumber == 0 || allApplicationList.size() <= showNumber) //改ページが必要ない
+	public void GetPage2(int showNumber2, int currentPage2) {
+		if (showNumber2 == 0 || allApplicationList.size() <= showNumber2) //改ページが必要ない
 		{
 			showApplicationList = allApplicationList;
 		} else {
