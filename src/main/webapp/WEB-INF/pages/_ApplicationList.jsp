@@ -7,19 +7,8 @@
 	
 	<div class="background">
 
-		<table class="table" border="3" name="table">
-			<colgroup>
-				<col style='width:60px;'>
-				<col style='width:80px;'>
-				<col style='width:150px;'>
-				<col style='width:150px;'>
-				<col style='width:120px;'>
-				<col style='width:120px;'>
-				<col style='width:200px;'>
-			</colgroup>
-			
-						<td colspan="5" style="border-right:none" class="aaa">
-							<div class="ddd">	
+		<table class="table" border="3" name="table">			
+						<td colspan="5" style="border-right:none" class="aaa">	
 							<c:choose>
 										<c:when test="${applicationModel.getAllApplicationList() != null}">
 											<div class="soke">
@@ -30,7 +19,6 @@
 											総件数：<span id="totalCount">0</span>件
 										</c:otherwise>
 									</c:choose>
-								</div>	
 						</td>
 											<!-- 		<td style="width:40px;border:none;text-align:right"> -->
 					<td style="border-left:none;border-right:none;text-align:right" class="bbb">
@@ -39,14 +27,14 @@
 					<!-- <td style="width:80px;border:none"> -->
 					<td style="border-left:none" class="ccc">
 						<c:set var="disabled" value=""/>
-						<c:if test="${applicationInfoModel.getAllApplicationList() == null}">
+						<c:if test="${applicationModel.getAllApplicationList() == null}">
 							<c:set var="disabled" value="disabled"/>
 						</c:if>
 						<select class="Select select2" name="showNumber" id="showNumber" style="width:100%;float:right" ${disabled}>
 							<c:set var="array" scope="request" >0,5,10,20,50,100</c:set>
 							<c:forEach var="item" items="${array}">
 								<c:choose>
-									<c:when test="${applicationInfoModel.getShowNumber() == item}">
+									<c:when test="${applicationModel.getShowNumber() == item}">
 					   					<c:set var="selected" value="selected" scope="request"/>
 									</c:when>
 									<c:otherwise>
@@ -71,11 +59,7 @@
 						<c:forEach var="item" items="${array}" >
 				<td onclick="sort(this)" align="center">
 							${item}
-							<span>   
-								<c:if test="${findModel.getSortColumn() == item}">  
-								   <br />${findModel.getSortOrder()} 
-								  </c:if>  
-							  </span>  
+
 						</td>
 						</c:forEach>
 					</tr>
@@ -115,12 +99,9 @@
 							</tr>
 						</c:forEach>
 					</c:if>
-					<c:if test="${applicationModel.getAllApplicationList() != null
-									&& applicationModel.getShowApplicationList().size() < applicationModel.getAllApplicationList().size()}">
-					</c:if>
-					
+
 				</table>
 			</div>
 		</body>
-			
+	
 	

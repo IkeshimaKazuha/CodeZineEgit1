@@ -7,7 +7,7 @@
 	<!-- モデルとテーブルのマッピングの設定 -->
 	<class name="G_T.OfficeSystem.model.HibApplicationInfoModel" table="application_info">
 		<!-- プライマリーキーの設定 -->
-		<id name="applyId" type="int">
+		<id name="applyId" type="string">
 			<column name="APPLY_ID" />
 		</id>
 		<property name="applyStatus" type="string">

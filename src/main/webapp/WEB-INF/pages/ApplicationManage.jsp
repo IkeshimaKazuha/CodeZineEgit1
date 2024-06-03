@@ -327,6 +327,22 @@
 				});
 			});
 
+			$(document).on('change', "[id^='showNumber']", function () {      
+ if ($('#totalCount').text() == "0") {     
+  return;    
+ }     
+ $.ajax({     
+  url: "${pageContext.request.contextPath}/GetPage2",    
+  type: "post",    
+  data: { showNumber:$("#showNumber").val(), currentPage: 1 },    
+  success: function (data) {    
+   $("#container").html(data);   
+  },    
+  error: function () {    
+   alert("システムエラーが発生しました");   
+  }    
+ });     
+});      
 
 		</script>
 	</body>

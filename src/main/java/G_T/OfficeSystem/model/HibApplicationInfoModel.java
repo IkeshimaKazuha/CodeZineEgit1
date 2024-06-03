@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class HibApplicationInfoModel {
 	private String userId;
-	private Integer applyId;
+	private String applyId;
 	private String title;
 	private String applyType;
 	private String applyFile;
@@ -22,7 +22,7 @@ public class HibApplicationInfoModel {
 
 	public HibApplicationInfoModel(
 			String userId,
-			Integer applyId,
+			String applyId,
 			String title,
 			String applyType,
 			String applyFile,
@@ -54,11 +54,11 @@ public class HibApplicationInfoModel {
 		this.userId = userId;
 	}
 	
-	public Integer getApplyId() {
+	public String getApplyId() {
 		return applyId;
 	}
 
-	public void setApplyId(Integer applyId) {
+	public void setApplyId(String applyId) {
 		this.applyId = applyId;
 	}
 

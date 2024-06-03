@@ -5,29 +5,31 @@ import java.sql.Timestamp;
 public class ApplicationInfoModel {
 
 	private String userId;
-	private Integer applyId;
+	private String applyId;
 	private String title;
 	private String applyType;
 	private String applyFile;
 	private String noticeMatter;
-	private Integer applyStatus;
+	private String applyStatus;
 	private Timestamp applyTime;
 	private Timestamp approveTime;
-
+	private Timestamp remandTime;
+	
 	public ApplicationInfoModel() {
 
 	}
 
 	public ApplicationInfoModel(
 			String userId,
-			Integer applyId,
+			String applyId,
 			String title,
 			String applyType,
 			String applyFile,
 			String noticeMatter,
-			Integer applyStatus,
+			String applyStatus,
 			Timestamp applyTime,
-			Timestamp approveTime) {
+			Timestamp approveTime,
+			Timestamp remandTime) {
 
 		this.userId = userId;
 		this.applyId = applyId;
@@ -38,7 +40,7 @@ public class ApplicationInfoModel {
 		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
-		
+		this.remandTime = remandTime;
 	}
 
 	public String getUserId() {
@@ -49,11 +51,11 @@ public class ApplicationInfoModel {
 		this.userId = userId;
 	}
 
-	public Integer getApplyId() {
+	public String getApplyId() {
 		return applyId;
 	}
 
-	public void setApplyId(Integer applyId) {
+	public void setApplyId(String applyId) {
 		this.applyId = applyId;
 	}
 
@@ -89,11 +91,11 @@ public class ApplicationInfoModel {
 		this.noticeMatter = noticeMatter;
 	}
 
-	public Integer getApplyStatus() {
+	public String getApplyStatus() {
 		return applyStatus;
 	}
 
-	public void setApplyStatus(Integer applyStatus) {
+	public void setApplyStatus(String applyStatus) {
 		this.applyStatus = applyStatus;
 	}
 
@@ -111,5 +113,12 @@ public class ApplicationInfoModel {
 
 	public void setApproveTime(Timestamp approveTime) {
 		this.approveTime = approveTime;
+	}
+	public Timestamp getRemandTime() {
+		return remandTime;
+	}
+
+	public void setRemandTime(Timestamp remandTime) {
+		this.remandTime = remandTime;
 	}
 }

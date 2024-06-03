@@ -1,5 +1,7 @@
 package G_T.OfficeSystem.model;
 
+import java.sql.Timestamp;
+
 public class ApplicationConditionModel {
 	private String userId;
 	private String applyId;
@@ -8,9 +10,9 @@ public class ApplicationConditionModel {
 	private String applyType;
 	private String applyFile;
 	private String noticeMatter;
-	private String applyTime;
-	private String approveTime;
-	private String remandTime;
+	private Timestamp  applyTime;
+	private Timestamp  approveTime;
+	private Timestamp remandTime;
 
 	public ApplicationConditionModel() {
 
@@ -24,9 +26,9 @@ public class ApplicationConditionModel {
 			String applyType,
 			String applyFile,
 			String noticeMatter,
-			String applyTime,
-			String approveTime,
-			String remandTime) {
+			Timestamp  applyTime,
+			Timestamp  approveTime,
+			Timestamp  remandTime) {
 		this.userId = userId;
 		this.applyId = applyId;
 		this.applyStatus = applyStatus;
@@ -95,27 +97,27 @@ public class ApplicationConditionModel {
 		this.noticeMatter = noticeMatter;
 	}
 
-	public String getApplyTime() {
+	public Timestamp   getApplyTime() {
 		return applyTime;
 	}
 
-	public void setApplyTime(String applyTime) {
+	public void setApplyTime(Timestamp  applyTime) {
 		this.applyTime = applyTime;
 	}
 
-	public String getApproveTime() {
+	public Timestamp  getApproveTime() {
 		return approveTime;
 	}
 
-	public void setApprove(String approveTime) {
+	public void setApprove(Timestamp  approveTime) {
 		this.approveTime = approveTime;
 	}
 
-	public String getRemandTime() {
+	public Timestamp getRemandTime() {
 		return remandTime;
 	}
 
-	public void setRemandTime(String remandTime) {
+	public void setRemandTime(Timestamp  remandTime) {
 		this.remandTime = remandTime;
 	}
 

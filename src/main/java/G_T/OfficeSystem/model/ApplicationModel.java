@@ -1,6 +1,10 @@
 package G_T.OfficeSystem.model;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -22,19 +26,19 @@ public class ApplicationModel {
 	private List<HibApplicationInfoModel> allApplicationList; //HibUserMasterModel
 	private List<HibApplicationInfoModel> showApplicationList; //HibUserMasterModel
 
-	/*private int showNumber;
+	private int showNumber;
 	private int currentPage;
 	private String sortOrder;
-	private String sortColumn;*/
+	private String sortColumn;
 	@Autowired
 	private ApplicationInfoModelDAO applicationInfoModelDAO;
 
 	public ApplicationModel() {
-	/*	showNumber = 10;
+		showNumber = 10;
 		currentPage = 1;
-		sortOrder = "▼";
+		sortOrder = "▲";
 		sortColumn = "申請ID";
-*/	}
+	}
 
 	public List<HibApplicationInfoModel> getAllApplicationList() {
 		return allApplicationList;
@@ -43,71 +47,71 @@ public class ApplicationModel {
 	public void setAllApplicationList(List<HibApplicationInfoModel> allApplicationList) {
 		this.allApplicationList = allApplicationList;
 	}
-
+	
 	//ユーザー情報を検索し、検索結果一覧に設定する
 	public void ApplyUser(ApplicationConditionModel condition) {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
 		setAllApplicationList(ApplyUserByCondition(condition));
-	//	GetPage(showNumber, currentPage);
-	//	 SortAll(sortColumn, sortOrder);
+		SortAll2(sortColumn, sortOrder);
+		GetPage2(showNumber, currentPage);
+	}
+	public void SortAll2(String sortColumn, String sortOrder) {
+		Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>() {
+			public int compare(HibApplicationInfoModel a1, HibApplicationInfoModel a2) {
+				int invertFlag = -1;
+				if (sortOrder == null || sortOrder.equals("") || sortOrder.equals("▲")) 
+				{
+					invertFlag = 1;//正負を入れ替える
+				}
+				if(sortColumn == null) {
+					return invertFlag * 1;
+				}
+				if (("申請ID").equals(sortColumn)) {
+					return invertFlag * (a1.getApplyId().compareTo(a2.getApplyId()) >= 0 ? 1 : -1);
+				} else if (("タイトル").equals(sortColumn)) {
+					return invertFlag * (a1.getTitle().compareTo(a2.getTitle()) >= 0 ? 1 : -1);
+				} else if (("状態").equals(sortColumn)) {
+					return invertFlag * (a1.getApplyStatus().compareTo(a2.getApplyStatus()) >= 0 ? 1 : -1);
+				} else if (("申請種類").equals(sortColumn)) {
+					return invertFlag * (a1.getApplyType().compareTo(a2.getApplyType()) >= 0 ? 1 : -1);
+				} else if (("申請日").equals(sortColumn)) {
+					return invertFlag * (a1.getApplyTime().compareTo(a2.getApplyTime()) >= 0 ? 1 : -1);
+				} else if (("承認日").equals(sortColumn)) {
+					return invertFlag * (a1.getRemandTime().compareTo(a2.getRemandTime()) >= 0 ? 1 : -1);
+				} else {
+					return invertFlag * 1;
+				}
+			}
+		});
+		this.sortColumn = sortColumn;
+		this.sortOrder = sortOrder;
+		GetPage2(showNumber, 1);
+
 	}
 
-/*	public void SortAll(String sortColumn, String sortOrder)
-	 {
-		 Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>(){
-			   public int compare(HibApplicationInfoModel a1, HibApplicationInfoModel a2){
-			    int invertFlag = -1;
-			    if (sortOrder == null || sortOrder.equals("") || sortOrder.equals("▼"))
-			    {
-			    	invertFlag = 1;//正負を入れ替える
-			    	} 
-			    if (("申請ID").equals(sortColumn)) {
-			     return invertFlag * (a1.getApplyId().compareTo(a2.getApplyId()) >= 0 ? 1 : -1);
-			    }
-			    else if (("タイトル").equals(sortColumn)) {
-				     return invertFlag * (a1.getTitle().compareTo(a2.getTitle()) >= 0 ? 1 : -1);
-				    }	
-			    else if (("状態").equals(sortColumn)) {
-				     return invertFlag * (a1.getApplyStatus().compareTo(a2.getApplyStatus()) >= 0 ? 1 : -1);
-				    }	
-			    else if (("申請種類").equals(sortColumn)) {
-				     return invertFlag * (a1.getApplyType().compareTo(a2.getApplyType()) >= 0 ? 1 : -1);
-				    }	
-			    else if (("申請日").equals(sortColumn)) {
-				     return invertFlag * (a1.getApplyTime().compareTo(a2.getApplyTime()) >= 0 ? 1 : -1);
-				    }	
-			    else if (("承認日").equals(sortColumn)) {
-				     return invertFlag * (a1.getRemandTime().compareTo(a2.getRemandTime()) >= 0 ? 1 : -1);
-				    }	
-			    else {
-			        return invertFlag * 1;
-			    }
-			   }
-		 });	 
-		  this.sortColumn = sortColumn;
-		  this.sortOrder = sortOrder;
-		  GetPage(showNumber, 1);
-		  
-	 }
-	
-	 public void GetPage(int showNumber, int currentPage)
-	 {
-	  if (showNumber == 0 || allApplicationList.size() <= showNumber)  //改ページが必要ない
-	  {
-	   showApplicationList = allApplicationList;
-	  }
-	  else
-	  {
+	public void GetPage2(int showNumber, int currentPage) {
+		if (showNumber == 0 || allApplicationList.size() <= showNumber) //改ページが必要ない
+		{
+			showApplicationList = allApplicationList;
+		} else {
 
-	   showApplicationList = IntStream.range(0, allApplicationList.size())
-	        .filter(index -> index >= (currentPage - 1) * showNumber && index < currentPage * showNumber)
-	        .mapToObj(allApplicationList::get)
-	        .collect(Collectors.toList());
-	  }
-	  this.showNumber = showNumber;
-	  this.currentPage = currentPage;
-	 }
-		  
+			showApplicationList = IntStream.range(0, allApplicationList.size())
+					.filter(index -> index >= (currentPage - 1) * showNumber && index < currentPage * showNumber)
+					.mapToObj(allApplicationList::get)
+					.collect(Collectors.toList());
+		}
+		this.showNumber = showNumber;
+		this.currentPage = currentPage;
+	}
+
+	public List<HibApplicationInfoModel> getShowApplicationList() {
+		return showApplicationList;
+	}
+
+	public void setShowApplicationList(List<HibApplicationInfoModel> showApplicationList) {
+		this.showApplicationList = showApplicationList;
+	}
+	
 	public int getShowNumber() {
 		return showNumber;
 	}
@@ -123,15 +127,31 @@ public class ApplicationModel {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-*/
-	
-	public List<HibApplicationInfoModel> getShowApplicationList() {
-		return showApplicationList;
+
+/*	public String getSortOrder() {
+		System.out.println("ApplicationModel. getSortOrder");
+		return sortOrder;
 	}
 
-	public void setShowApplicationList(List<HibApplicationInfoModel> showApplicationList) {
-		this.showApplicationList = showApplicationList;
+	public void setSortOrder(String sortOrder) {
+		System.out.println("ApplicationModel. setSortOrder");
+		this.sortOrder = sortOrder;
 	}
+
+	public String getSortColumn() {
+		System.out.println("ApplicationModel. getSortColumn");
+		return sortColumn;
+	}
+
+	public void setSortColumn(String sortColumn) {
+		System.out.println("ApplicationModel. setSortColumn");
+		this.sortColumn = sortColumn;
+	}
+
+	public void Sort(String sortColumn, String sortOrder) {
+		SortAll2(sortColumn, sortOrder);
+		GetPage2(showNumber2, 1);
+	}*/
 
 	public List<HibApplicationInfoModel> ApplyUserByCondition(ApplicationConditionModel condition) {
 		Session session = null;
@@ -141,21 +161,6 @@ public class ApplicationModel {
 			//criteria.add(Restrictions.ilike(condition.getApplyStatus(),"applyStatus"));
 
 			if (condition != null) {
-				/*if (condition.getUserId() != null && !condition.getUserId().equals("")) {
-					criteria.add(Restrictions.like("userId", "%" + condition.getUserId() + "%"));
-				}
-				if (condition.getApplyId() != null && !condition.getApplyId().equals("")) {
-					criteria.add(Restrictions.like("applyId", "%" + condition.getApplyId() + "%"));
-				}
-				if (condition.getTitle() != null && !condition.getTitle().equals("")) {
-					criteria.add(Restrictions.like("title", "%" + condition.getTitle() + "%"));
-				}
-				if (condition.getApplyType() != null && !condition.getApplyType().equals("")) {
-					criteria.add(Restrictions.like("applyType", "%" + condition.getApplyType() + "%"));
-				}
-				if (condition.getNoticeMatter() != null && !condition.getNoticeMatter().equals("")) {
-					criteria.add(Restrictions.like("noticeMatter", "%" + condition.getNoticeMatter() + "%"));
-				}*/
 				if (condition.getApplyStatus() != null) {
 					criteria.add(Restrictions.like("applyStatus", "%" + condition.getApplyStatus() + "%"));
 				}

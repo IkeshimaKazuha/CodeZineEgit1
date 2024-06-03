@@ -12,15 +12,15 @@ public class ApplicationInfoModelMapper implements RowMapper<ApplicationInfoMode
  @Override     
  public ApplicationInfoModel mapRow(ResultSet rs, int rowNum) throws SQLException {     
   String userId = rs.getString("USER_ID");    
-  Integer applyId = rs.getInt("APPLY_ID");    
+  String applyId = rs.getString("APPLY_ID");    
   String title = rs.getString("TITLE");    
   String applyType = rs.getString("APPLY_TYPE");    
   String applyFile = rs.getString("APPLY_FILE");    
   String noticeMatter = rs.getString("NOTICE_MATTER");    
-  Integer applyStatus = rs.getInt("APPLY_STATUS");    
+  String applyStatus = rs.getString("APPLY_STATUS");    
   Timestamp applyTime = rs.getTimestamp("APPLY_TIME");    
   Timestamp approveTime = rs.getTimestamp("APPROVE_TIME");
-  
+  Timestamp remandTime = rs.getTimestamp("REMAND_TIME");
       
   return new ApplicationInfoModel(    
     userId,  
@@ -31,7 +31,8 @@ public class ApplicationInfoModelMapper implements RowMapper<ApplicationInfoMode
     noticeMatter,    
     applyStatus, 
     applyTime,   
-    approveTime
+    approveTime,
+    remandTime
   );    
  }     
 }      
