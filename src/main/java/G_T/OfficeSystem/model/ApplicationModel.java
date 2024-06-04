@@ -26,16 +26,16 @@ public class ApplicationModel {
 	private List<HibApplicationInfoModel> allApplicationList; //HibUserMasterModel
 	private List<HibApplicationInfoModel> showApplicationList; //HibUserMasterModel
 
-	private int showNumber2;
-	private int currentPage2;
+	private int showNumber;
+	private int currentPage;
 	private String sortOrder;
 	private String sortColumn;
 	@Autowired
 	private ApplicationInfoModelDAO applicationInfoModelDAO;
 
 	public ApplicationModel() {
-		showNumber2 = 10;
-		currentPage2 = 1;
+		showNumber = 10;
+		currentPage = 1;
 		sortOrder = "▲";
 		sortColumn = "申請ID";
 	}
@@ -52,10 +52,10 @@ public class ApplicationModel {
 	public void ApplyUser(ApplicationConditionModel condition) {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
 		setAllApplicationList(ApplyUserByCondition(condition));
-		SortAll2(sortColumn, sortOrder);
-		GetPage2(showNumber2, currentPage2);
+		SortAll(sortColumn, sortOrder);
+		GetPage(showNumber, currentPage);
 	}
-	public void SortAll2(String sortColumn, String sortOrder) {
+	public void SortAll(String sortColumn, String sortOrder) {
 		Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>() {
 			public int compare(HibApplicationInfoModel a1, HibApplicationInfoModel a2) {
 				int invertFlag = -1;
@@ -85,12 +85,12 @@ public class ApplicationModel {
 		});
 		this.sortColumn = sortColumn;
 		this.sortOrder = sortOrder;
-		GetPage2(showNumber2, 1);
+		GetPage(showNumber, 1);
 
 	}
 
-	public void GetPage2(int showNumber2, int currentPage2) {
-		if (showNumber2 == 0 || allApplicationList.size() <= showNumber2) //改ページが必要ない
+	public void GetPage(int showNumber, int currentPage) {
+		if (showNumber == 0 || allApplicationList.size() <= showNumber) //改ページが必要ない
 		{
 			showApplicationList = allApplicationList;
 		} else {
@@ -128,7 +128,7 @@ public class ApplicationModel {
 		this.currentPage = currentPage;
 	}
 
-/*	public String getSortOrder() {
+	public String getSortOrder() {
 		System.out.println("ApplicationModel. getSortOrder");
 		return sortOrder;
 	}
@@ -149,9 +149,9 @@ public class ApplicationModel {
 	}
 
 	public void Sort(String sortColumn, String sortOrder) {
-		SortAll2(sortColumn, sortOrder);
-		GetPage2(showNumber2, 1);
-	}*/
+		SortAll(sortColumn, sortOrder);
+		GetPage(showNumber, 1);
+	}
 
 	public List<HibApplicationInfoModel> ApplyUserByCondition(ApplicationConditionModel condition) {
 		Session session = null;

@@ -8,34 +8,34 @@
 	<class name="G_T.OfficeSystem.model.HibApplicationInfoModel" table="application_info">
 		<!-- プライマリーキーの設定 -->
 		<id name="applyId" type="string">
-			<column name="APPLY_ID" />
+			<column name="APPLY_ID"/>
 		</id>
 		<property name="applyStatus" type="string">
-			<column name="APPLY_STATUS" />
+			<column name="APPLY_STATUS"/>
 		</property>
 		<property name="applyFile" type="string">
-			<column name="APPLY_FILE" />
+			<column name="APPLY_FILE"/>
 		</property>
 		<property name="title" type="string">
-			<column name="TITLE" />
+			<column name="TITLE"/>
 		</property>
 		<property name="applyType" type="string">
-			<column name="APPLY_TYPE" />
+			<column name="APPLY_TYPE"/>
 		</property>
 		<property name="applyTime" type="timestamp">
-			<column name="APPLY_TIME" />
+			<column name="APPLY_TIME"/>
 		</property>
 		<property name="approveTime" type="timestamp">
-			<column name="APPROVE_TIME" />
+			<column name="APPROVE_TIME"/>
 		</property>
 		<property name="noticeMatter" type="string">
-			<column name="NOTICE_MATTER" />
+			<column name="NOTICE_MATTER"/>
 		</property>
 		<property name="userId" type="string">
-			<column name="USER_ID" />
+			<column name="USER_ID"/>
 		</property>
 				<property name="remandTime" type="timestamp">
-			<column name="REMAND_TIME" />
+			<column name="REMAND_TIME"/>
 		</property>
 	</class>
 </hibernate-mapping>

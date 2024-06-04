@@ -30,21 +30,21 @@ public class ApplicationForUser {
 	}
 	
 	//書類申請画面　ソート
-	/*	@RequestMapping(value="/Sort2", method = RequestMethod.POST)
+/*	@RequestMapping(value="/Sort_app", method = RequestMethod.POST)
 		public String Sort(HttpSession session,  Model model
 				, @RequestParam String sortColumn
 				, @RequestParam String sortOrder){
 
-			applicationModel.SortAll2(sortColumn, sortOrder);//sort
+			applicationModel.SortAll(sortColumn, sortOrder);//sort
 			model.addAttribute("applicationModel", applicationModel);
 			return ("_ApplicationList");
 		}
 */
 		//書類申請画面　ページ取得
-	 @RequestMapping(value = "/GetPage2", method = RequestMethod.POST)
-	 public String GetPage2(HttpSession session, Model model, @RequestParam int showNumber,
+   @RequestMapping(value = "/GetPage_app", method = RequestMethod.POST)
+	 public String GetPage(HttpSession session, Model model, @RequestParam int showNumber,
 	   @RequestParam int currentPage) {
-	  applicationModel.GetPage2(showNumber, currentPage);
+	  applicationModel.GetPage(showNumber, currentPage);
 	  model.addAttribute("applicationModel", applicationModel);
 	  return ("_ApplicationList");
 	 }
