@@ -27,9 +27,8 @@
 			<td style="border-left: none; border-right: none; text-align: right"
 				class="bbb">表示件数：</td>
 			<!-- <td style="width:80px;border:none"> -->
-			<td style="border-left: none" class="ccc"><c:set var="disabled"
-					value="" /> <c:if
-					test="${applicationModel.getAllApplicationList() == null}">
+			<td style="border-left: none" class="ccc"><c:set var="disabled" value="" /> 
+			<c:if test="${applicationModel.getAllApplicationList() == null}">
 					<c:set var="disabled" value="disabled" />
 				</c:if> <select class="Select select2" name="showNumber" id="showNumber"
 				style="width: 100%; float: right" ${disabled}>
@@ -108,8 +107,7 @@
 	</div>
 
 	<!--空白の6列-->
-	<c:if
-		test="${applicationModel.getShowApplicationList() != null 
+	<c:if test="${applicationModel.getShowApplicationList() != null 
 		&& applicationModel.getShowApplicationList().size() < applicationModel.getAllApplicationList().size()}">
 		<tr>
 			<td colspan="7" style="border:none;">

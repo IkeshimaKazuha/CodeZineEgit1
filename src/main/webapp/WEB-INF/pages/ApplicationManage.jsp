@@ -335,9 +335,7 @@ input[type=button] {
 				$.ajax({
 					url : "${pageContext.request.contextPath}/GetPage_app",
 					type : "post",
-					data : {
-						showNumber : $("#showNumber").val(),
-						currentPage : 1
+					data : {showNumber : $("#showNumber").val(),currentPage : $('#currentPage').val()
 					},
 					/*「表示件数」のコンボボックスの値が変わったときに、ユーザー一覧に該当する件数の
 					1ページ目のデータを表示する。このデータを取得するために、
@@ -351,7 +349,96 @@ input[type=button] {
 				});
 			});
 
-			
+		$(document).on('click', "[id='previousPage']", function () {       
+ event.preventDefault();      
+ var selecting = $('#currentPage').val();      
+       
+ if (selecting == 1) {      
+  return;     
+ }      
+       
+ $('#currentPage').val(Number(selecting) - 1);      
+ $('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");      
+       
+       
+ $.ajax({      
+  url: "${pageContext.request.contextPath}/GetPage_app",     
+  type: "post",     
+  data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) - 1) },     
+  success: function (data) {     
+   $("#container").html(data);    
+  },     
+  error: function () {     
+   alert("システムエラーが発生しました");    
+  }     
+ });      
+});       
+       
+       
+$(document).on('click', "[id='nextPage']", function () {       
+ event.preventDefault();      
+ var selecting = $('#currentPage').val();      
+ var maxvalue = $('#currentPage option:last-child').val();      
+       
+ if (selecting == maxvalue) {      
+  return;     
+ }      
+       
+ $('#currentPage').val(Number(selecting) + 1);      
+ $('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle.png");      
+       
+       
+ $.ajax({      
+  url: "${pageContext.request.contextPath}/GetPage_app",     
+  type: "post",     
+  data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) + 1) },     
+  success: function (data) {     
+   $("#container").html(data);    
+  },     
+  error: function () {     
+   alert("システムエラーが発生しました");    
+  }     
+ });      
+});      
+
+function sort(obj) {
+  if ($('#totalCount').text() == "0") {
+   return;
+  }
+
+  var span = $(obj).find("span");
+
+  var sortOrder = span.text().trim();
+  var sortColumn = $(obj).text().replace("▲", "").replace("▼", "").trim();
+
+  $("#searchList").find("tr:nth-child(1)  td").each(function () {
+
+   $(this).find("span").text("");
+  });
+
+  if (sortOrder == "" || sortOrder == "▲") {
+   sortOrder = "▼";
+  }
+  else {
+   sortOrder = "▲";
+  }
+
+  $('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle_disable.png");
+  $('#currentPage').val(1);
+  $('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");
+
+  $.ajax({
+   url: "${pageContext.request.contextPath}/Sort_app",
+   type: "post",
+   data: {  sortColumn: sortColumn,  sortOrder: sortOrder  },
+   success: function (data) {
+    $("#container").html(data);
+   },
+   error: function () {
+    alert("システムエラーが発生しました");
+   }
+  });
+ }		
 
 
 	

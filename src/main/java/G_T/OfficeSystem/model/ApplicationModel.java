@@ -36,7 +36,7 @@ public class ApplicationModel {
 	public ApplicationModel() {
 		showNumber = 10;
 		currentPage = 1;
-		sortOrder = "▲";
+		sortOrder = "▼";
 		sortColumn = "申請ID";
 	}
 
@@ -53,13 +53,13 @@ public class ApplicationModel {
 		//setAllUserList(ApplicationInfoModelDAO.ApplyUser(condition));
 		setAllApplicationList(ApplyUserByCondition(condition));
 		SortAll(sortColumn, sortOrder);
-		GetPage(showNumber, currentPage);
+		GetPage(showNumber, 1);
 	}
 	public void SortAll(String sortColumn, String sortOrder) {
 		Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>() {
 			public int compare(HibApplicationInfoModel a1, HibApplicationInfoModel a2) {
 				int invertFlag = -1;
-				if (sortOrder == null || sortOrder.equals("") || sortOrder.equals("▲")) 
+				if (sortOrder == null || sortOrder.equals("") || sortOrder.equals("▼")) 
 				{
 					invertFlag = 1;//正負を入れ替える
 				}

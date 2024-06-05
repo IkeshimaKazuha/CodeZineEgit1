@@ -30,7 +30,7 @@ public class ApplicationForUser {
 	}
 	
 	//書類申請画面　ソート
-/*	@RequestMapping(value="/Sort_app", method = RequestMethod.POST)
+	@RequestMapping(value="/Sort_app", method = RequestMethod.POST)
 		public String Sort(HttpSession session,  Model model
 				, @RequestParam String sortColumn
 				, @RequestParam String sortOrder){
@@ -39,7 +39,7 @@ public class ApplicationForUser {
 			model.addAttribute("applicationModel", applicationModel);
 			return ("_ApplicationList");
 		}
-*/
+
 		//書類申請画面　ページ取得
    @RequestMapping(value = "/GetPage_app", method = RequestMethod.POST)
 	 public String GetPage(HttpSession session, Model model, @RequestParam int showNumber,
