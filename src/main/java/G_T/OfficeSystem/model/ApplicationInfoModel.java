@@ -10,10 +10,11 @@ public class ApplicationInfoModel {
 	private String applyType;
 	private String applyFile;
 	private String noticeMatter;
-	private Integer applyStatus;
-	private Timestamp applyTime;
-	private Timestamp approveTime;
-
+	private String applyStatus;
+	private String applyTime;
+	private String approveTime;
+	private Timestamp remandTime;
+	
 	public ApplicationInfoModel() {
 
 	}
@@ -25,9 +26,10 @@ public class ApplicationInfoModel {
 			String applyType,
 			String applyFile,
 			String noticeMatter,
-			Integer applyStatus,
-			Timestamp applyTime,
-			Timestamp approveTime) {
+			String applyStatus,
+			String applyTime,
+			String approveTime,
+			Timestamp remandTime) {
 
 		this.userId = userId;
 		this.applyId = applyId;
@@ -38,7 +40,7 @@ public class ApplicationInfoModel {
 		this.applyStatus = applyStatus;
 		this.applyTime = applyTime;
 		this.approveTime = approveTime;
-		
+		this.remandTime = remandTime;
 	}
 
 	public String getUserId() {
@@ -89,27 +91,34 @@ public class ApplicationInfoModel {
 		this.noticeMatter = noticeMatter;
 	}
 
-	public Integer getApplyStatus() {
+	public String getApplyStatus() {
 		return applyStatus;
 	}
 
-	public void setApplyStatus(Integer applyStatus) {
+	public void setApplyStatus(String applyStatus) {
 		this.applyStatus = applyStatus;
 	}
 
-	public Timestamp getApplyTime() {
+	public String getApplyTime() {
 		return applyTime;
 	}
 
-	public void setApplyTime(Timestamp applyTime) {
+	public void setApplyTime(String applyTime) {
 		this.applyTime = applyTime;
 	}
 
-	public Timestamp getApproveTime() {
+	public String getApproveTime() {
 		return approveTime;
 	}
 
-	public void setApproveTime(Timestamp approveTime) {
+	public void setApproveTime(String approveTime) {
 		this.approveTime = approveTime;
+	}
+	public Timestamp getRemandTime() {
+		return remandTime;
+	}
+
+	public void setRemandTime(Timestamp remandTime) {
+		this.remandTime = remandTime;
 	}
 }

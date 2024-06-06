@@ -6,11 +6,8 @@
   id="WebApp_ID"
 version="3.0">
  <display-name>SpringMVC</display-name>
- <session-config>
-  <session-timeout>30</session-timeout>
- </session-config>
 
+</web-app>   
 
-</web-app>
 
 

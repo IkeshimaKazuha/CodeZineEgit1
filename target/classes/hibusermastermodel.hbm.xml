@@ -37,6 +37,6 @@
    <column name="type" />         
   </property>          
   <!-- 結合するテーブルとの関係とそのテーブルの設定 -->          
-  <one-to-one name="hibProfileInfoModel" class="G_T.OfficeSystem.model.HibProfileInfoModel" />          
+  <one-to-one name="hibProfileInfoModel" class="G_T.OfficeSystem.model.HibProfileInfoModel" />        
  </class>           
 </hibernate-mapping>            
