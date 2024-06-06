@@ -27,8 +27,9 @@
 			<td style="border-left: none; border-right: none; text-align: right"
 				class="bbb">表示件数：</td>
 			<!-- <td style="width:80px;border:none"> -->
-			<td style="border-left: none" class="ccc"><c:set var="disabled" value="" /> 
-			<c:if test="${applicationModel.getAllApplicationList() == null}">
+			<td style="border-left: none" class="ccc"><c:set var="disabled"
+					value="" /> <c:if
+					test="${applicationModel.getAllApplicationList() == null}">
 					<c:set var="disabled" value="disabled" />
 				</c:if> <select class="Select select2" name="showNumber" id="showNumber"
 				style="width: 100%; float: right" ${disabled}>
@@ -54,12 +55,13 @@
 					</c:forEach>
 			</select></td>
 
-			<tr>
+		</tr>
 				<c:set var="array" scope="request">状態,申請ID,申請書類,タイトル,申請日,承認日,連絡事項</c:set>
 
 				<c:forEach var="item" items="${array}">
-					<td onclick="sort(this)">${item} <span> <c:if
-								test="${applicationModel.getSortColumn() == item}">
+					<td onclick="sort(this)">${item} 
+						<span> 
+							<c:if test="${applicationModel.getSortColumn() == item}">
 								<br />${applicationModel.getSortOrder()} 
    					</c:if>
 					</span>
@@ -72,7 +74,7 @@
 
 					<c:forEach var="item"
 						items="${applicationModel.getShowApplicationList()}">
-						<c:set var="i" value="${i+1}" scope="request" />
+						<c:set var="i" value="${i+1}" scope="request"/>
 						<tr onclick="sendData(this)">
 							<td class="TextCenter"><c:choose>
 									<c:when test="${item.getApplyStatus() == 0 }">
@@ -103,66 +105,77 @@
 						</tr>
 					</c:forEach>
 				</c:if>
-		</table>
 	</div>
 
 	<!--空白の6列-->
 	<c:if test="${applicationModel.getShowApplicationList() != null 
 		&& applicationModel.getShowApplicationList().size() < applicationModel.getAllApplicationList().size()}">
 		<tr>
-			<td colspan="7" style="border:none;">
-			 <div style="float:right">
-		 
-			  <c:choose>
-			   <c:when test="${applicationModel.getCurrentPage() == 1}">
-				<input type="image" src="${pageContext.request.contextPath}/img/left_triangle_disable.png"   
-		   id="previousPage" style="width:30px;float:left" />
-			   </c:when>
-			   <c:otherwise>    
-			  
-			   <input type="image" src="${pageContext.request.contextPath}/img/left_triangle.png" id="previousPage"    
-				 style="width:30px;float:left" /> 
-				 </c:otherwise>    
-				</c:choose>
-			  <select class="Select" name="currentPage" id="currentPage"          
-				  style="width:60px;height:30px;float:left;margin:0px 5px 0px 5px;">       
-				<c:set var="modulo" value="${applicationModel.getAllApplicationList().size() % applicationModel.getShowNumber()}"         
-				   scope="request"/>      
-				<c:set var="plus" value="${(modulo == 0? 0:1)}" scope="request"/>        
-				<c:set var="loopCount" value="${applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + plus}"         
-				   scope="request"/>      
-				 <c:if test="${applicationModel.getShowNumber() != 0         
-					  && (applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + 1) >= 1}">    
-				<c:forEach var="loop" begin="1" end="${loopCount}">
-		 
-				<c:choose>   
-				<c:when test="${applicationModel.getCurrentPage() == loop}">  
-				 <option selected value="${loop}">${loop}</option> 
-				</c:when>  
-				<c:otherwise>  
-				 <option value="${loop}">${loop}</option> 
-				</c:otherwise>  
-				  </c:choose>   
-				 </c:forEach>    
-				</c:if>     
-			   </select>
-		   <fmt:parseNumber var="numberData" value="${applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + 1}"    
-		   integerOnly="true" /> 
-		  <c:choose>
-		   <c:when test="${applicationModel.getCurrentPage() == numberData }">
-		   <input type="image" src="${pageContext.request.contextPath}/img/right_triangle_disable.png"    
-		   id="nextPage" style="width:30px;float:left" /> 
-		   </c:when>    
-		   <c:otherwise>     
-				   
-			<input type="image" src="${pageContext.request.contextPath}/img/right_triangle.png" id="nextPage"     
-			   style="width:30px;float:left" />  
-			</c:otherwise>     
-			</c:choose>      
-		  </div>       
-			</td>        
-		   </tr>         
+			<td colspan="7" style="border: none;">
+				<div style="float: right">
+
+					<c:choose>
+						<c:when test="${applicationModel.getCurrentPage() == 1}">
+							<input type="image"
+								src="${pageContext.request.contextPath}/img/left_triangle_disable.png"
+								id="previousPage" style="width: 30px; float: left" />
+						</c:when>
+						<c:otherwise>
+
+							<input type="image"
+								src="${pageContext.request.contextPath}/img/left_triangle.png"
+								id="previousPage" style="width: 30px; float: left" />
+						</c:otherwise>
+					</c:choose>
+
+
+					<select class="Select select2" name="currentPage" id="currentPage"
+						style="width: 60px; height: 30px; float: left; margin: 0px 5px 0px 5px;">
+						<c:set var="modulo"
+							value="${applicationModel.getAllApplicationList().size() % applicationModel.getShowNumber()}"
+							scope="request" />
+						<c:set var="plus" value="${(modulo == 0? 0:1)}" scope="request" />
+						<c:set var="loopCount"
+							value="${applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + plus}"
+							scope="request" />
+						<c:if
+							test="${applicationModel.getShowNumber() != 0         
+				   && (applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + 1) >= 1}">
+							<c:forEach var="loop" begin="1" end="${loopCount}">
+
+								<c:choose>
+									<c:when test="${applicationModel.getCurrentPage() == loop}">
+										<option selected value="${loop}">${loop}</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${loop}">${loop}</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</c:if>
+					</select>
+
+
+					<fmt:parseNumber var="numberData"
+						value="${applicationModel.getAllApplicationList().size() / applicationModel.getShowNumber() + 1}"
+						integerOnly="true" />
+					<c:choose>
+						<c:when test="${applicationModel.getCurrentPage() == numberData }">
+							<input type="image"
+								src="${pageContext.request.contextPath}/img/right_triangle_disable.png"
+								id="nextPage" style="width: 30px; float: left" />
+						</c:when>
+						<c:otherwise>
+
+							<input type="image"
+								src="${pageContext.request.contextPath}/img/right_triangle.png" id="nextPage" 
+								style="width: 30px; float: left" />
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</td>
+		</tr>
 	</c:if>
-</body>
+</table>
 
 

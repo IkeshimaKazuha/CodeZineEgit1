@@ -4,13 +4,13 @@ import java.sql.Timestamp;
 
 public class ApplicationConditionModel {
 	private String userId;
-	private String applyId;
+	private Integer applyId;
 	private Integer applyStatus;
 	private String title;
 	private String applyType;
 	private String applyFile;
 	private String noticeMatter;
-	private Timestamp  applyTime;
+	private String  applyTime;
 	private Timestamp  approveTime;
 	private Timestamp remandTime;
 
@@ -20,13 +20,13 @@ public class ApplicationConditionModel {
 
 	public ApplicationConditionModel(
 			String userId,
-			String applyId,
+			Integer applyId,
 			Integer applyStatus,
 			String title,
 			String applyType,
 			String applyFile,
 			String noticeMatter,
-			Timestamp  applyTime,
+			String  applyTime,
 			Timestamp  approveTime,
 			Timestamp  remandTime) {
 		this.userId = userId;
@@ -49,11 +49,11 @@ public class ApplicationConditionModel {
 		this.userId = userId;
 	}
 
-	public String getApplyId() {
+	public Integer getApplyId() {
 		return applyId;
 	}
 
-	public void setApplyId(String applyId) {
+	public void setApplyId(Integer applyId) {
 		this.applyId = applyId;
 	}
 
@@ -97,11 +97,11 @@ public class ApplicationConditionModel {
 		this.noticeMatter = noticeMatter;
 	}
 
-	public Timestamp   getApplyTime() {
+	public String  getApplyTime() {
 		return applyTime;
 	}
 
-	public void setApplyTime(Timestamp  applyTime) {
+	public void setApplyTime(String  applyTime) {
 		this.applyTime = applyTime;
 	}
 

@@ -85,4 +85,3 @@ public class ApplicationInfoModelDAO extends JdbcDaoSupport {
 
 }     
  }     
-     

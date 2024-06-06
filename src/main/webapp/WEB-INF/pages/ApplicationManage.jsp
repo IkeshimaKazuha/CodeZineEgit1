@@ -9,14 +9,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>書類申請</title>
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.css" />
-<link type="text/css" rel="new stylesheet"
-	href="${pageContext.request.contextPath}/css/Site.css" />
-<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"
-	type="text/javascript"></script>
+<link type="text/css" rel="new stylesheet" href="${pageContext.request.contextPath}/css/Site.css" />
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
 <style>
+
 html {
 	height: 100%;
 }
@@ -293,6 +294,7 @@ input[type=button] {
 			<tiles:insertAttribute name="_ApplicationList" />
 		</div>
 	</div>
+</body>
 	<script type="text/ecmascript">
 		
 
@@ -335,8 +337,7 @@ input[type=button] {
 				$.ajax({
 					url : "${pageContext.request.contextPath}/GetPage_app",
 					type : "post",
-					data : {showNumber : $("#showNumber").val(),currentPage : $('#currentPage').val()
-					},
+					data : {showNumber : $("#showNumber").val(),currentPage : 1},
 					/*「表示件数」のコンボボックスの値が変わったときに、ユーザー一覧に該当する件数の
 					1ページ目のデータを表示する。このデータを取得するために、
 					選択された件数と1ページ目のページ番号をサーバー側に送る*/
@@ -348,6 +349,23 @@ input[type=button] {
 					}
 				});
 			});
+
+			$(document).on('change', "[id='currentPage']", function () {
+   if ($('#totalCount').text() == "0") {
+    return;
+   }
+   $.ajax({
+    url: "${pageContext.request.contextPath}/GetPage_app",
+    type: "post",
+    data: { showNumber:$("#showNumber").val(), currentPage: $('#currentPage').val() },
+    success: function (data) {
+     $("#container").html(data);
+    },
+    error: function () {
+     alert("システムエラーが発生しました");
+    }
+   });
+  });
 
 		$(document).on('click', "[id='previousPage']", function () {       
  event.preventDefault();      
@@ -409,7 +427,7 @@ function sort(obj) {
   var span = $(obj).find("span");
 
   var sortOrder = span.text().trim();
-  var sortColumn = $(obj).text().replace("▲", "").replace("▼", "").trim();
+  var sortColumn = $(obj).text().replace("▼", "").replace("▲", "").trim();
 
   $("#searchList").find("tr:nth-child(1)  td").each(function () {
 
@@ -443,6 +461,5 @@ function sort(obj) {
 
 	
 	</script>
-</body>
 
 </html>

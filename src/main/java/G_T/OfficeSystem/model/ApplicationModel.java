@@ -58,16 +58,16 @@ public class ApplicationModel {
 	public void SortAll(String sortColumn, String sortOrder) {
 		Collections.sort(this.allApplicationList, new Comparator<HibApplicationInfoModel>() {
 			public int compare(HibApplicationInfoModel a1, HibApplicationInfoModel a2) {
-				int invertFlag = -1;
-				if (sortOrder == null || sortOrder.equals("") || sortOrder.equals("▼")) 
+				int invertFlag = 1;
+				if (sortOrder == null || sortOrder.equals("▼") || sortOrder.equals("")) 
 				{
-					invertFlag = 1;//正負を入れ替える
+					invertFlag = -1;//正負を入れ替える
 				}
 				if(sortColumn == null) {
 					return invertFlag * 1;
 				}
 				if (("申請ID").equals(sortColumn)) {
-					return invertFlag * (a1.getApplyId().compareTo(a2.getApplyId()) >= 0 ? 1 : -1);
+					return invertFlag * Integer.compare(a1.getApplyId(),a2.getApplyId());
 				} else if (("タイトル").equals(sortColumn)) {
 					return invertFlag * (a1.getTitle().compareTo(a2.getTitle()) >= 0 ? 1 : -1);
 				} else if (("状態").equals(sortColumn)) {
@@ -174,5 +174,5 @@ public class ApplicationModel {
 			session.close();
 		}
 	}
-
 }
+

@@ -7,7 +7,7 @@
 	<!-- モデルとテーブルのマッピングの設定 -->
 	<class name="G_T.OfficeSystem.model.HibApplicationInfoModel" table="application_info">
 		<!-- プライマリーキーの設定 -->
-		<id name="applyId" type="string">
+		<id name="applyId" type="integer">
 			<column name="APPLY_ID"/>
 		</id>
 		<property name="applyStatus" type="string">
@@ -22,10 +22,10 @@
 		<property name="applyType" type="string">
 			<column name="APPLY_TYPE"/>
 		</property>
-		<property name="applyTime" type="timestamp">
+		<property name="applyTime" type="string">
 			<column name="APPLY_TIME"/>
 		</property>
-		<property name="approveTime" type="timestamp">
+		<property name="approveTime" type="string">
 			<column name="APPROVE_TIME"/>
 		</property>
 		<property name="noticeMatter" type="string">
