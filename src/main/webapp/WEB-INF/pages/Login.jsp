@@ -44,6 +44,11 @@
       }
     </style>
     <script type="text/ecmascript">
+function validateUserId(userId) {
+                var regex = /^[a-zA-Z0-9]{1,10}$/;　//[a-zA-Z0-9]{1,10}で範囲を指定
+                return regex.test(userId);
+            }
+
       function CheckNull() {
        var userid = document.getElementById("userId");
        var pass = document.getElementById("password");
@@ -100,6 +105,14 @@
         alert("ユーザーIDを入力してください");
         return false;
        }
+       if (!validateUserId($("#userId").val())) {　//validateUserId(userId)の引数(userId)がここに飛ぶ
+//!で否定
+                 alert("ユーザーIDは1～10文字の英数字で入力してください");
+                    return false;
+                }
+//範囲外の場合は、alertが表示される
+//これまでは全角や範囲以上の桁数でも通っていたが、このコードでチェックが可能になる
+       
        if ($("#password").val() == "") {
         alert("パスワードを入力してください");
         return false;

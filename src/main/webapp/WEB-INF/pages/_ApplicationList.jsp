@@ -168,8 +168,8 @@
 						<c:otherwise>
 
 							<input type="image"
-								src="${pageContext.request.contextPath}/img/right_triangle.png" id="nextPage" 
-								style="width: 30px; float: left" />
+								src="${pageContext.request.contextPath}/img/right_triangle.png"
+								id="nextPage" style="width: 30px; float: left" />
 						</c:otherwise>
 					</c:choose>
 				</div>
