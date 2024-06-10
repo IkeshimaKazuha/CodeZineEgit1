@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 import org.springframework.jdbc.core.RowMapper;      
       
-public class UserManageInfoModelMapper implements RowMapper<UserInfoModel> {      
+public class UserManageInfoModelMapper implements RowMapper<UserManageInfoModel> {      
  public static final String BASE_SQL = "Select u.USER_ID," +      
    "u.PASSWORD," +    
    "u.EMAIL," +    
