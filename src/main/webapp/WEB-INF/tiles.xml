@@ -22,4 +22,12 @@
 	<!-- _ApplicationList -->
 	<definition name="_ApplicationList" template="/WEB-INF/pages/_ApplicationList.jsp" />
 	
+	<!-- UsernManage -->
+	<definition name="UserManage" template="/WEB-INF/pages/UserManage.jsp">
+		<put-attribute name="_UserManageList" value="/WEB-INF/pages/_UserManageList.jsp" />
+	</definition>
+
+	<!-- _UserManageList -->
+	<definition name="_UserManageList" template="/WEB-INF/pages/_UserManageList.jsp" />
+	
 </tiles-definitions>
