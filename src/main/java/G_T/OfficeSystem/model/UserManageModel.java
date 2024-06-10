@@ -183,66 +183,6 @@ public class UserManageModel {
 				criteria.add(Restrictions.like("type", "%" + condition.getType() + "%"));
 			}
 
-
-//	    if (condition.getBirthday() != "") {
-//	     criteria.add(Restrictions.eq("p.birthday", condition.getBirthday()));
-//	    }
-
-	          if (condition.getBirthday() != null && !condition.getBirthday().equals("")) {
-	           if(condition.getBirthday1() != null && !condition.getBirthday1().equals("")) {
-	            criteria.add(Restrictions.like("p.birthday", condition.getBirthday1() + "%"));
-	           }
-	           if(condition.getBirthday2() != null && !condition.getBirthday2().equals("")) {
-	            criteria.add(Restrictions.like("p.birthday", "____" + condition.getBirthday2() + "%"));
-	           }
-	           if(condition.getBirthday3() != null && !condition.getBirthday3().equals("")) {
-	             criteria.add(Restrictions.like("p.birthday", "%" + condition.getBirthday3()));
-	           }
-	          }
-
-	    if (condition.getTel() != "") {
-	     criteria.add(Restrictions.like("p.tel", "%" + condition.getTel() + "%"));
-	    }
-
-	    if (condition.getPostcode() != "") {
-	     criteria.add(Restrictions.like("p.postcode", "%" + condition.getPostcode() + "%"));
-	    }
-
-	    if (condition.getAddress() != "") {
-	     criteria.add(Restrictions.like("p.address", "%" + condition.getAddress() + "%"));
-	    }
-
-//	    if (condition.getHireDate() != "") {
-//	     criteria.add(Restrictions.eq("p.hireDate", condition.getHireDate()));
-//	    }
-
-	          if (condition.getHireDate() != null && !condition.getHireDate().equals("")) {
-	           if(condition.getHireDate1() != null && !condition.getHireDate1().equals("")) {
-	            criteria.add(Restrictions.like("p.hireDate", condition.getHireDate1() + "%"));
-	           }
-	           if(condition.getHireDate2() != null && !condition.getHireDate2().equals("")) {
-	           criteria.add(Restrictions.like("p.hireDate", "____" + condition.getHireDate2() + "%"));
-	           }
-	           if(condition.getHireDate3() != null && !condition.getHireDate3().equals("")) {
-	            criteria.add(Restrictions.like("p.hireDate", "%" + condition.getHireDate3()));
-	           }
-	          }
-
-	    if (condition.getAffiliation() != "") {
-	     criteria.add(Restrictions.eq("p.affiliation", condition.getAffiliation()));
-	    }
-
-	    if (condition.getPosition() != "") {
-	     criteria.add(Restrictions.like("p.position", "%" + condition.getPosition() + "%"));
-	    }
-
-	    if (condition.getSpecialSkill() != "") {
-	     criteria.add(Restrictions.like("p.specialSkill", "%" + condition.getSpecialSkill() + "%"));
-	    }
-
-	    /*if (condition.getComment() != "") {
-	     criteria.add(Restrictions.like("p.comment", "%" + condition.getComment() + "%"));
-	    }*/
 	   }
 
 	   return criteria.list();

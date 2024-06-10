@@ -57,6 +57,9 @@
 			</c:forEach>
 		</c:if>
 	</div>
+
+	
 			<!--空白の6列-->	
 	
 	</body>
+	</table>

@@ -7,184 +7,272 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>検索画面</title>
+<meta cherset="UTF-8">
+<title>ユーザー管理</title>
 <link type="text/css" rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.css" />
 <link type="text/css" rel="new stylesheet"
 	href="${pageContext.request.contextPath}/css/Site.css" />
-<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"
-	type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 
 <style>
-* {
-	font-family: 'MS Mincho', 'MS PMincho', 'MS Gothic', 'MS PGothic', Arial,
-		Helvetica, sans-serif;
-}
-
-body, html {
+html {
 	height: 100%;
-	background-color: #e9ebee;
 }
 
 body {
-	height: auto;
-	margin: 8px;
+	/* background-color:#C0C0C0; */
+	font-size: large;
+	height: 100%;
+	/* padding:20px 0px; */
 }
 
-.TOPBAR {
-	width: 100%; /* 幅：全画面 */
-	min-width: 1000px;
-	height: 50px; /* 高さ：50px */
-	background-color: #5B9BD5; /* 背景色：#5B9BD5 */
-	color: white; /* テキスト色：ホワイト */
-	font-size: 24px; /* フォントサイズ：24px */
-	font-weight: bold; /* フォントの太さ：太 */
-	text-align: center; /* テキストの位置：トップバーの中央 */
-	display: flex; /* テキストの位置：トップバーの中央 */
-	justify-content: center; /* テキストの位置：トップバーの中央 */
-	align-items: center; /* テキストの位置：トップバーの中央 */
-	margin-bottom: 8px; /* 白色背景枠との間の幅：8px */
+.background {
+	background-color: WHITE;
+	width: 90%;
+	margin: 0 auto;
+	min-height: 100%;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
 }
 
-.TITLE {
-	font-size: 24px;
-	font-weight: bold;
+.container1 {
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 10px;
 }
 
-.TEXTBOX {
-	color: #494949;
-	border: 1px solid #69A4D8;
+.h1 {
+	border-bottom: 3px solid #69A4D8;
+}
+
+.select1 {
+	border: 2px #69A4D8 solid;
 	border-radius: 5px;
-	height: 30px;
-	font-size: 18px;
-	padding-left: 5px;
-	padding-right: 5px;
+	width: 200px;
+	height: 40px;
 }
 
-.TEXTAREA {
-	color: #494949;
-	border: 1px solid #69A4D8;
+.select2 {
+	border: 2px #69A4D8 solid;
 	border-radius: 5px;
-	font-size: 18px;
-	padding-left: 5px;
-	padding-right: 5px;
-	resize: none;
+	width: 150px;
+	height: 40px;
 }
 
-.BUTTON {
-	background-color: #5B9BD5;
-	color: white;
-	border: 1px solid #43729D;
-	border-radius: 5px;
-	height: 36px;
-	font-size: 18px;
-	font-weight: bold;
+input[type=button] {
+	border-radius: 10px;
+	color: #fff;
+	height: 40px;
+	border: 2px #69A4D8 solid;
+	background-color: #69A4D8;
 }
 
-.BUTTONDISABLE {
-	background-color: #dddddd;
-	color: white;
-	border: 1px solid #cccccc;
-	border-radius: 5px;
-	height: 36px;
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.BUTTONDISABLE:hover {
-	cursor: pointer;
-}
-
-.LABEL {
-	color: #494949;
-	font-size: 18px;
-	text-align: left;
-}
-
-.SELECT {
-	color: #494949;
-	border: 1px solid #69A4D8;
-	border-radius: 5px;
-	height: 30px;
-	font-size: 18px;
-}
-
-.TITLELINE {
-	border-bottom: 3px solid #5B9BD5;
+.div1 {
 	width: 100%;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	display: flex;
+	align-items: center;
 }
 
-.TEXTBOX:focus, .TEXTAREA:focus, .SELECT:focus {
-	outline: none !important;
-	border-color: red;
-	box-shadow: 0 0 5px #ce7171;
+.div状態 {
+	/* 	//margin-left:20px; */
+	
 }
 
-.BUTTON:hover {
-	cursor: pointer;
+.option {
+	
 }
 
-.BUTTON:focus {
-	outline: none !important;
-	border-color: #43729D;
-	box-shadow: 0 0 5px #608db8;
+.button {
+	
 }
 
-tr {
-	height: 35px;
+.TopMenuContainer {
+	width: 100%;
+	height: 50px;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #5B9BD5;
+	z-index: 100;
+}
+
+.TopMenu {
+	width: 1012px;
+	height: 50px;
+	display: block;
+	position: fixed;
+	top: 0;
+	background-color: #5B9BD5;
+	z-index: 101;
+}
+
+.TopMenuTitle {
+	float: left;
+	padding-top: 5px;
+}
+
+.TopMenuSettingImgContainer {
+	float: right;
+	width: 40px;
+	height: 100%;
+	right: 0px;
+}
+
+.TopMenuDropDownComandContainer {
+	float: right;
+	height: 100%;
+}
+
+.TopMenuDropDownComandContainer:hover .TopMenuComandContent {
+	display: block !important;
+}
+
+.TopMenuComandContent {
+	position: absolute;
+	top: 45px;
+	right: 0px;
+	width: 100px;
+	font-size: 12px;
+	padding: 3px;
+	border: 1px solid #0094ff;
+	display: none !important;
+	background-color: white;
+	z-index: 90;
+}
+
+.TopMenuSettingImg {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	right: 0px;
+}
+
+.TopMenuNick {
+	float: right;
 	font-size: 18px;
+	padding-top: 15px;
 }
 
-td {
-	text-align: left;
-	width: auto;
+.LeftMenu {
+	width: 200px;
+	height: 100vh;
+	background-color: #ffffff;
+	color: white;
+	position: fixed;
+	top: 60px;
+	padding: 10px;
+	z-index: 90;
 }
 
-a {
-	font-size: 18px;
+.RightMenu {
+	width: 0px;
+	height: 100vh;
+	background-color: #ffffff;
+	color: white;
+	position: fixed;
+	right: 0;
+	top: 60px;
+	padding: 10px;
+	z-index: 90;
+}
+
+.TopContainer {
+	width: 1012px;
+	height: 50xp;
+	position: relative;
+	left: calc(50% - 506px); /* 回答3・追加：画面を中央に寄せる */
+}
+
+.MidContainer {
+	width: 802px;
+	height: auto;
+	min-height: 100%;
+	display: inline-block;
+	margin-top: 60px;
+	margin-left: 210px;
+	margin-right: 0px;
+	margin-bottom: 0;
+	background-color: #ffffff;
+	padding: 10px;
+	/* overflow-y:scroll; */ /* 回答1・削除：白部分の縦スクロールバーを無くす */
 }
 
 .row {
-	min-height: 35px;
-	padding-bottom: 3px;
+	margin-bottom: 10px;
 }
 
-td {
-	border: 1px solid #69A4D8;
-}
-
-.TEXTBOX {
-	width: 300px;
-}
-
-.TEXTAREA {
-	width: 300px;
-	height: 100px;
-	resize: none;
-}
-
-.PARENTCONTAINER {
-	width: 1000px; /* 白い背景の枠の幅：1000px */
-	height: auto; /* 白い背景の枠の高さ：ウィンドウのサイズに合わせる */
-	min-height: calc(100% - 58px); /* 白い背景の枠の高さ：ウィンドウのサイズに合わせる */
-	margin: 0 auto; /* 白い背景の枠の位置：全画面の均等割付 */
-	display: block; /* 白い背景の枠の位置：全画面の均等割付 */
-	background-color: white; /* 背景色：ホワイト */
-}
-
-.container {
-	width: 950px;
+.table {
+	width: 95%;
+	border: 2px solid #69A4D8;
 	margin: 0 auto;
+}
+
+.table th, td {
+	border: 2px solid #69A4D8;
+}
+
+.tr1 {
+	border-bottom: 4px solid #69A4D8;
+}
+
+.tablebox1 {
+	display: table;
+	width: 100%;
+}
+
+.SOUKENSU {
+	display: table-cell;
+}
+
+.tablebox2 {
+	display: table-cell;
+	text-align: right;
+}
+
+.HYOJI {
+	display: inline-block;
+}
+
+.HYOJIOPTION {
+	
 }
 </style>
 </head>
 
 <body>
-	<div class="TOPBAR">ユーザー管理画面</div>
-	<div class="PARENTCONTAINER">
-		<div class="container-fluid">
+	<div class="TopContainer">
+		<div class="TopMenuContainer PageHeader"></div>
+		<div id="top" class="TopMenu PageHeader">
+	<div class="TOPMenuTitle">ユーザー管理画面</div>
+
+	<div class="TopMenuSettingImgContainer">
+		<div class="TopMenuDropDownComandContainer">
+			<!-- 回答5・変更・開始：トップバーの画像を設定 -->
+			<input type="image" class="TopMenuSettingImg v_middle_a"
+				src="./img/setting.png">
+			<!-- 回答5・変更・完了：トップバーの画像を設定 -->
+			<div class="TopMenuComandContent">
+				<a href="/BaseInformation/Index" style="font-size: 12px">基本情報</a><br>
+				<a href="/ProfileInformation/Index" style="font-size: 12px">プロファイル</a><br>
+				<div class="TitleLine"></div>
+				<a href="/Authentication/Logout" style="font-size: 12px">ログアウト</a>
+			</div>
+		</div>
+
+	</div>
+	<div class="TopMenuNick">ニックネーム 権限</div>
+</div>
+
+<div class="TitleLine" style="width: 100%; margin-top: 10px"></div>
+
+<div class="background">
+	<div class="container1">
+		<div class="h1">
+			<h1 id="h2">ユーザー管理</h1>
+		</div>
+
 			<form id="Form1" method="post" action="UserManage">
 				<div class="row div1">
 					<div class="col-xs-offset-1 col-xs-2 div表示区分">表示区分</div>

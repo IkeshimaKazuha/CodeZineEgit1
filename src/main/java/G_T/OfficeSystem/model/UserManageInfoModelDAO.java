@@ -41,7 +41,7 @@ public class UserManageInfoModelDAO extends JdbcDaoSupport {
   }    
  }     
       
- public List<UserInfoModel> FindUser(FindConditionModel condition) { //「List」クラス     
+ public List<UserManageInfoModel> FindUser(FindConditionModel condition) { //「List」クラス     
   String sql = UserInfoModelMapper.BASE_SQL + " and u.TYPE = 2 ";    //登録済のユーザーだけを取得する
       
   if (condition != null) {    
@@ -142,7 +142,7 @@ public class UserManageInfoModelDAO extends JdbcDaoSupport {
       
   UserManageInfoModelMapper mapper = new UserManageInfoModelMapper();    
   try {    
-   List<UserInfoModel> list = this.getJdbcTemplate().query(sql, mapper);   //クエリを実行して、取得した結果を「UserInfoModel」のリストに代入して、呼んでいるところにリストを返す。
+   List<UserManageInfoModel> list = this.getJdbcTemplate().query(sql, mapper);   //クエリを実行して、取得した結果を「UserInfoModel」のリストに代入して、呼んでいるところにリストを返す。
    return list;   //FindModel FindUserへ
   } catch (EmptyResultDataAccessException e) {    
    return null;   

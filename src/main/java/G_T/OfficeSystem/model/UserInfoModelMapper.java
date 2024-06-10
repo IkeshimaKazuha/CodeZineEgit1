@@ -40,7 +40,7 @@ public class UserInfoModelMapper implements RowMapper<UserInfoModel> {
   Timestamp lastlogindate = rs.getTimestamp("LASTLOGINDATE");    
   String registerLink = rs.getString("REGISTER_LINK");    
   Timestamp registerLinkTime = rs.getTimestamp("REGISTER_LINK_TIME");    
-  Integer type = rs.getInt("TYPE");    
+  String type = rs.getString("TYPE");    
   String nickName = rs.getString("NICK_NAME");    
   String userName = rs.getString("USER_NAME");    
   String birthday = rs.getString("BIRTHDAY");    

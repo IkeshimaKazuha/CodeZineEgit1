@@ -33,7 +33,7 @@
   <property name="registerLinkTime" type="timestamp">          
    <column name="register_link_time" />         
   </property>          
-  <property name="type" type="String">          
+  <property name="type" type="string">          
    <column name="type" />         
   </property>          
   <!-- 結合するテーブルとの関係とそのテーブルの設定 -->          

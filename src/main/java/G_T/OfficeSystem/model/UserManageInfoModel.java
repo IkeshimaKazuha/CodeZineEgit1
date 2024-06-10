@@ -17,17 +17,17 @@ public class UserManageInfoModel {
 	private String profileId;
 	private String nickName;
 	private String userName;
-/*	private String birthday1;
+	private String birthday1;
 	private String birthday2;
-	private String birthday3;*/
+	private String birthday3;
 	private String birthday;
 	private Integer sex;
 	private String postcode;
 	private String address;
 	private String tel;
-/*	private String hireDate1;
+	private String hireDate1;
 	private String hireDate2;
-	private String hireDate3;*/
+	private String hireDate3;
 	private String hireDate;
 	private String affiliation;
 	private String position;
@@ -149,7 +149,7 @@ public class UserManageInfoModel {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-/*	public String getBirthday1() {
+	public String getBirthday1() {
 		return birthday1;
 	}
 	public void setBirthday1(String birthday1) {
@@ -166,7 +166,7 @@ public class UserManageInfoModel {
 	}
 	public void setBirthday3(String birthday3) {
 		this.birthday3 = birthday3;
-	}*/
+	}
 	public String getBirthday() {
 		return birthday;
 	}
@@ -197,7 +197,7 @@ public class UserManageInfoModel {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-/*	public String getHireDat1() {
+	public String getHireDat1() {
 		return hireDate1;
 	}
 	public void setHireDate1(String hireDate1) {
@@ -214,7 +214,7 @@ public class UserManageInfoModel {
 	}
 	public void setHireDate3(String hireDate3) {
 		this.hireDate3 = hireDate3;
-	}*/
+	}
 	public String getHireDate() {
 		return hireDate;
 	}
