@@ -29,5 +29,4 @@
 
 	<!-- _UserManageList -->
 	<definition name="_UserManageList" template="/WEB-INF/pages/_UserManageList.jsp" />
-	
 </tiles-definitions>

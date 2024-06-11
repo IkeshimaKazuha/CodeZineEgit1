@@ -16,6 +16,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 
 <style>
+
 html {
 	height: 100%;
 }
@@ -180,7 +181,7 @@ input[type=button] {
 
 .TopContainer {
 	width: 1012px;
-	height: 50xp;
+	height: 50px;
 	position: relative;
 	left: calc(50% - 506px); /* 回答3・追加：画面を中央に寄せる */
 }
@@ -240,12 +241,11 @@ input[type=button] {
 }
 </style>
 </head>
-
 <body>
 	<div class="TopContainer">
 		<div class="TopMenuContainer PageHeader"></div>
 		<div id="top" class="TopMenu PageHeader">
-	<div class="TOPMenuTitle">ユーザー管理画面</div>
+	<div class="TopMenuTitle">ユーザー管理</div>
 
 	<div class="TopMenuSettingImgContainer">
 		<div class="TopMenuDropDownComandContainer">
@@ -266,11 +266,11 @@ input[type=button] {
 </div>
 
 <div class="TitleLine" style="width: 100%; margin-top: 10px"></div>
-
+</div>
 <div class="background">
 	<div class="container1">
 		<div class="h1">
-			<h1 id="h2">ユーザー管理</h1>
+			<h1 id="h2">ユーザーの一覧</h1>
 		</div>
 
 			<form id="Form1" method="post" action="UserManage">
@@ -282,15 +282,18 @@ input[type=button] {
 						<option value="1">登録リンク発行中</option>
 						<option value="2">登録済み</option>
 						<option value="3">削除済</option>
-					</select> 
-				</div>
-			</form>
-			<div id="container">
-				<tiles:insertAttribute name="_UserManageList" />
+					</select> <input type="button" class="col-xs-offset-3 col-xs-3 button" name="回復" id="btn回復"
+					value="回復" style="width: 100px; float: right;"> 
+					<input type="button" class="col-xs-offset-1 col-xs-1 button" name="削除" id="btn削除" value="削除"
+					style="width: 100px; float: right;">
 			</div>
-		</div>
-</body>
-
+			   </form>
+			   </div>
+			   <div id="container">
+				<tiles:insertAttribute name="_UserManageList" />
+			   </div>
+			  </div>
+			 </body>
 <script type="text/ecmascript">
 		
 

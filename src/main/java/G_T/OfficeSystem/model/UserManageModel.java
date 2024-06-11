@@ -36,7 +36,7 @@ public class UserManageModel {
 	 /* showNumber = 10;
 	  currentPage = 1;
 	  sortOrder = "▲";
-	  sortColumn = "ユーザーID";*/
+	  sortColumn = "氏名";*/
 	 }
 
 	 public List<HibUserMasterModel> getAllUserManageList() {
@@ -50,6 +50,10 @@ public class UserManageModel {
 	 public void MUser(UserManageConditionModel condition) {
 	//  setAllUserList(userInfoModelDAO.FindUser(condition));
 
+		 List<HibUserMasterModel> results = UserManageByCondition(condition);
+		    setAllUserManageList(results); // これは全件リストの設定
+		    setShowUserManageList(results); // こちらが表示用リストの設定
+		 
 	  setAllUserManageList(UserManageByCondition(condition));
 
 	  /*SortAll(sortColumn, sortOrder);
@@ -60,7 +64,7 @@ public class UserManageModel {
 //	 public void SortAll(String sortColumn, String sortOrder)
 	// {
 
-	/*  Collections.sort(this.allUserList, new Comparator<HibUserMasterModel>(){
+	/*  Collections.sort(this.allUserManageList, new Comparator<HibUserMasterModel>(){
 	   public int compare(HibUserMasterModel u1, HibUserMasterModel u2){
 	    int invertFlag = -1;
 	    if (sortOrder == null || sortOrder.equals("▲") || sortOrder.equals("")){
@@ -107,16 +111,16 @@ public class UserManageModel {
 
 	 public void GetPage(int showNumber, int currentPage)
 	 {
-	  if (showNumber == 0 || allUserList.size() <= showNumber)  //改ページが必要ない
+	  if (showNumber == 0 || allUserManageList.size() <= showNumber)  //改ページが必要ない
 	  {
-	   showUserList = allUserList;
+	   showUserManageList = allUserManageList;
 	  }
 	  else
 	  {
 
-	   showUserList = IntStream.range(0, allUserList.size())
+	   showUserManageList = IntStream.range(0, allUserManageList.size())
 	        .filter(index -> index >= (currentPage - 1) * showNumber && index < currentPage * showNumber)
-	        .mapToObj(allUserList::get)
+	        .mapToObj(allUserManageList::get)
 	        .collect(Collectors.toList());
 	  }
 	  this.showNumber = showNumber;
@@ -182,9 +186,8 @@ public class UserManageModel {
 			if (condition.getType() != null) {
 				criteria.add(Restrictions.like("type", "%" + condition.getType() + "%"));
 			}
-
 	   }
-
+		//List<HibUserMasterModel> results = criteria.list();
 	   return criteria.list();
 	  }
 	  catch (Exception ex) {
