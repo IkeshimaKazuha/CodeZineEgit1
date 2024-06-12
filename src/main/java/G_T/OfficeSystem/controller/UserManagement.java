@@ -30,7 +30,7 @@ public class UserManagement {
 	}
 	
 	//書類申請画面　ソート
-/*		@RequestMapping(value="/Sort_UserM", method = RequestMethod.POST)
+		@RequestMapping(value="/Sort_UserM", method = RequestMethod.POST)
 			public String Sort(HttpSession session,  Model model
 					, @RequestParam String sortColumn
 					, @RequestParam String sortOrder){
@@ -38,7 +38,7 @@ public class UserManagement {
 				userManageModel.SortAll(sortColumn, sortOrder);//sort
 				model.addAttribute("userManageModel", userManageModel);
 				return ("_UserManageList");
-			}*/
+			}
 
 			//書類申請画面　ページ取得
 	   @RequestMapping(value = "/GetPage_UserM", method = RequestMethod.POST)

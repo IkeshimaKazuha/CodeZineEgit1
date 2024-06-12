@@ -58,7 +58,11 @@
 	<c:set var="array" scope="request">選択,氏名,性別,生年月日,電話番号,メール,住所,所属,役職</c:set>
    <c:forEach var="item" items="${array}">
     <td onclick="sort(this)">${item}
-
+	<span> 
+		<c:if test="${userManageModel.getSortColumn() == item}">
+			<br />${userManageModel.getSortOrder()} 
+   </c:if>
+</span>
 </td>
 </c:forEach>
    </tr>

@@ -418,6 +418,44 @@ $(document).on('click', "[id='nextPage']", function () {
  });      
 });      
 
+function sort(obj) {
+  if ($('#totalCount').text() == "0") {
+   return;
+  }
+
+  var span = $(obj).find("span");
+
+  var sortOrder = span.text().trim();
+  var sortColumn = $(obj).text().replace("▲", "").replace("▼", "").trim();
+
+  $("#searchList").find("tr:nth-child(1)  td").each(function () {
+
+   $(this).find("span").text("");
+  });
+
+  if (sortOrder == "" || sortOrder == "▼") {
+   sortOrder = "▲";
+  }
+  else {
+   sortOrder = "▼";
+  }
+
+  $('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle_disable.png");
+  $('#currentPage').val(1);
+  $('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");
+
+  $.ajax({
+   url: "${pageContext.request.contextPath}/Sort_UserM",
+   type: "post",
+   data: {  sortColumn: sortColumn,  sortOrder: sortOrder  },
+   success: function (data) {
+    $("#container").html(data);
+   },
+   error: function () {
+    alert("システムエラーが発生しました");
+   }
+  });
+ }
 
 </script>
 </html>
