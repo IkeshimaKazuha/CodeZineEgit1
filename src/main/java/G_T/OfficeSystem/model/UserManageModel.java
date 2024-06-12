@@ -1,6 +1,10 @@
 package G_T.OfficeSystem.model;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -24,19 +28,19 @@ public class UserManageModel {
 	 private List<HibUserMasterModel> allUserManageList;
 	 private List<HibUserMasterModel> showUserManageList;
 
-/*	 private int showNumber;
+	 private int showNumber;
 	 private int currentPage;
 	 private String sortOrder;
 	 private String sortColumn;
-*/
+
 	 @Autowired
 	 private UserManageInfoModelDAO userManageInfoModelDAO;
 
 	 public UserManageModel() {
-	 /* showNumber = 10;
+	  showNumber = 10;
 	  currentPage = 1;
 	  sortOrder = "▲";
-	  sortColumn = "氏名";*/
+	  sortColumn = "氏名";
 	 }
 
 	 public List<HibUserMasterModel> getAllUserManageList() {
@@ -50,30 +54,30 @@ public class UserManageModel {
 	 public void MUser(UserManageConditionModel condition) {
 	//  setAllUserList(userInfoModelDAO.FindUser(condition));
 
-		 List<HibUserMasterModel> results = UserManageByCondition(condition);
+		 /*List<HibUserMasterModel> results = UserManageByCondition(condition);
 		    setAllUserManageList(results); // これは全件リストの設定
 		    setShowUserManageList(results); // こちらが表示用リストの設定
-		 
+		 */
 	  setAllUserManageList(UserManageByCondition(condition));
 
-	  /*SortAll(sortColumn, sortOrder);
-	  GetPage(showNumber, currentPage);
-*/
+	  SortAll(sortColumn, sortOrder);
+	  GetPage(showNumber, 1);
+
 	 }
 
-//	 public void SortAll(String sortColumn, String sortOrder)
-	// {
+	 public void SortAll(String sortColumn, String sortOrder)
+	{
 
-	/*  Collections.sort(this.allUserManageList, new Comparator<HibUserMasterModel>(){
+	 Collections.sort(this.allUserManageList, new Comparator<HibUserMasterModel>(){
 	   public int compare(HibUserMasterModel u1, HibUserMasterModel u2){
 	    int invertFlag = -1;
 	    if (sortOrder == null || sortOrder.equals("▲") || sortOrder.equals("")){
 	     invertFlag = 1;//正負を入れ替える
 	    }
-	    if (("ユーザーID").equals(sortColumn)) {
-	     return invertFlag * (u1.getUserId().compareTo(u2.getUserId()) >= 0 ? 1 : -1);
+	    if(sortColumn == null) {
+	    	return invertFlag * 1;
 	    }
-	    else if (("氏名").equals(sortColumn)) {
+	    if (("氏名").equals(sortColumn)) {
 	     return invertFlag * (u1.getHibProfileInfoModel().getUserName().compareTo(u2.getHibProfileInfoModel().getUserName()) >= 0 ? 1 : -1);
 	    }
 	    else if(("性別").equals(sortColumn)) {
@@ -85,18 +89,27 @@ public class UserManageModel {
 	     return c;
 	     //return invertFlag * (u1.getSex().compareTo(u2.getSex()) > 0 ? 1 : -1 );
 	    }
+	    else if(("生年月日").equals(sortColumn)) {
+		     return invertFlag * (u1.getHibProfileInfoModel().getBirthday().compareTo(u2.getHibProfileInfoModel().getBirthday()) >= 0 ? 1 : -1 );
+		    }
+	    
 	    else if(("電話番号").equals(sortColumn)) {
 	     return invertFlag * (u1.getHibProfileInfoModel().getTel().compareTo(u2.getHibProfileInfoModel().getTel()) >= 0 ? 1 : -1 );
 	    }
-	    else if(("郵便番号").equals(sortColumn)) {
-	     return invertFlag * (u1.getHibProfileInfoModel().getPostcode().compareTo(u2.getHibProfileInfoModel().getPostcode()) >= 0 ? 1 : -1 );
-	    }
+	    else if(("メール").equals(sortColumn)) {
+		     return invertFlag * (u1.getEmail().compareTo(u2.getEmail()) >= 0 ? 1 : -1 );
+		    }
 	    else if(("住所").equals(sortColumn)) {
 	     return invertFlag * (u1.getHibProfileInfoModel().getAddress().compareTo(u2.getHibProfileInfoModel().getAddress()) >= 0 ? 1 : -1 );
 	    }
-	    else if(("コメント").equals(sortColumn)) {
-	        return invertFlag * (u1.getHibProfileInfoModel().getComment().compareTo(u2.getHibProfileInfoModel().getComment()) >= 0 ? 1 : -1 );
-	       }
+	    
+	    else if(("所属").equals(sortColumn)) {
+		     return invertFlag * (u1.getHibProfileInfoModel().getAffiliation().compareTo(u2.getHibProfileInfoModel().getAffiliation()) >= 0 ? 1 : -1 );
+		    }
+	    else if(("役職").equals(sortColumn)) {
+		     return invertFlag * (u1.getHibProfileInfoModel().getPosition().compareTo(u2.getHibProfileInfoModel().getPosition()) >= 0 ? 1 : -1 );
+		    }
+
 	    else {
 	     return invertFlag * 1;
 	    }
@@ -126,7 +139,7 @@ public class UserManageModel {
 	  this.showNumber = showNumber;
 	  this.currentPage = currentPage;
 	 }
-*/
+
 	 public List<HibUserMasterModel> getShowUserManageList() {
 	  return showUserManageList;
 	 }
@@ -134,7 +147,7 @@ public class UserManageModel {
 	  this.showUserManageList = showUserManageList;
 	 }
 
-/*	 public int getShowNumber() {
+	 public int getShowNumber() {
 	  return showNumber;
 	 }
 	 public void setShowNumber(int showNumber) {
@@ -150,22 +163,22 @@ public class UserManageModel {
 
 
 	 public String getSortOrder() {
-	 System.out.println("FindModel. getSortOrder");
+	 System.out.println("UserManageModel. getSortOrder");
 	 return sortOrder;
 	 }
 
 	 public void setSortOrder(String sortOrder) {
-	 System.out.println("FindModel. setSortOrder");
+	 System.out.println("UserManageModel. setSortOrder");
 	 this.sortOrder = sortOrder;
 	 }
 
 	 public String getSortColumn() {
-	 System.out.println("FindModel. getSortColumn");
+	 System.out.println("UserManageModel. getSortColumn");
 	 return sortColumn;
 	 }
 
 	 public void setSortColumn(String sortColumn) {
-	 System.out.println("FindModel. setSortColumn");
+	 System.out.println("UserManageModel. setSortColumn");
 	 this.sortColumn = sortColumn;
 	 }
 
@@ -173,7 +186,7 @@ public class UserManageModel {
 	  SortAll(sortColumn, sortOrder);
 	  GetPage(showNumber, 1);
 	 }
-*/
+
 	 public List<HibUserMasterModel> UserManageByCondition(UserManageConditionModel condition) {
 	  Session session = null;
 	  try {

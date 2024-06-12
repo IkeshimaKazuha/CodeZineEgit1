@@ -328,5 +328,96 @@ input[type=button] {
         });
     });
 	
+	//クライアント側の表示件数の「Change」イベントをjQueryで作成
+   $(document).on('change', "[id^='showNumber']", function() {
+    if ($('#totalCount').text() == "0") {
+     return;
+    }
+    $.ajax({
+     url : "${pageContext.request.contextPath}/GetPage_UserM",
+     type : "post",
+     data : {showNumber : $("#showNumber").val(),currentPage : 1},
+     /*「表示件数」のコンボボックスの値が変わったときに、ユーザー一覧に該当する件数の
+     1ページ目のデータを表示する。このデータを取得するために、
+     選択された件数と1ページ目のページ番号をサーバー側に送る*/
+     success : function(data) {
+      $("#container").html(data);
+     },
+     error : function() {
+      alert("システムエラーが発生しました");
+     }
+    });
+   });
+
+   $(document).on('change', "[id='currentPage']", function () {
+   if ($('#totalCount').text() == "0") {
+    return;
+   }
+   $.ajax({
+    url: "${pageContext.request.contextPath}/GetPage_UserM",
+    type: "post",
+    data: { showNumber:$("#showNumber").val(), currentPage: $('#currentPage').val() },
+    success: function (data) {
+     $("#container").html(data);
+    },
+    error: function () {
+     alert("システムエラーが発生しました");
+    }
+   });
+  });
+
+  $(document).on('click', "[id='previousPage']", function () {       
+ event.preventDefault();      
+ var selecting = $('#currentPage').val();      
+       
+ if (selecting == 1) {      
+  return;     
+ }      
+       
+ $('#currentPage').val(Number(selecting) - 1);      
+ $('#nextPage').attr("src", "${pageContext.request.contextPath}/img/right_triangle.png");      
+       
+       
+ $.ajax({      
+  url: "${pageContext.request.contextPath}/GetPage_UserM",     
+  type: "post",     
+  data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) - 1) },     
+  success: function (data) {     
+   $("#container").html(data);    
+  },     
+  error: function () {     
+   alert("システムエラーが発生しました");    
+  }     
+ });      
+});       
+       
+       
+$(document).on('click', "[id='nextPage']", function () {       
+ event.preventDefault();      
+ var selecting = $('#currentPage').val();      
+ var maxvalue = $('#currentPage option:last-child').val();      
+       
+ if (selecting == maxvalue) {      
+  return;     
+ }      
+       
+ $('#currentPage').val(Number(selecting) + 1);      
+ $('#previousPage').attr("src", "${pageContext.request.contextPath}/img/left_triangle.png");      
+       
+       
+ $.ajax({      
+  url: "${pageContext.request.contextPath}/GetPage_UserM",     
+  type: "post",     
+  data: { showNumber:$("#showNumber").val(), currentPage: (Number(selecting) + 1) },     
+  success: function (data) {     
+   $("#container").html(data);    
+  },     
+  error: function () {     
+   alert("システムエラーが発生しました");    
+  }     
+ });      
+});      
+
+
 </script>
 </html>
