@@ -197,7 +197,7 @@ public class UserManageModel {
 
 		if (condition != null) {
 			if (condition.getType() != null) {
-				criteria.add(Restrictions.like("type", "%" + condition.getType() + "%"));
+				criteria.add(Restrictions.eq("type",condition.getType()));
 			}
 	   }
 		//List<HibUserMasterModel> results = criteria.list();

@@ -13,7 +13,7 @@ public class UserInfoModel {
  private Timestamp lastlogindate;  
  private String registerLink;  
  private Timestamp registerLinkTime;  
- private String type;  
+ private Integer type;  
  private String profileId;  
  private String nickName;  
  private String userName;  
@@ -42,7 +42,7 @@ public class UserInfoModel {
    Timestamp lastlogindate,
    String registerLink,
    Timestamp registerLinkTime,
-   String type,
+   Integer type,
    String nickName,
    String userName,
    String birthday,
@@ -116,10 +116,10 @@ public class UserInfoModel {
  public void setRegisterLinkTime(Timestamp registerLinkTime) {  
   this.registerLinkTime = registerLinkTime; 
  }  
- public String getType() {  
+ public Integer getType() {  
   return type; 
  }  
- public void setType(String type) {  
+ public void setType(Integer type) {  
   this.type = type; 
  }  
  public String getProfileId() {  

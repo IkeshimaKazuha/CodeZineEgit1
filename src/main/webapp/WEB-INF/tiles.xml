@@ -29,4 +29,8 @@
 
 	<!-- _UserManageList -->
 	<definition name="_UserManageList" template="/WEB-INF/pages/_UserManageList.jsp" />
+	
+<!--  Registration  -->
+<definition name="UserInfoRegister" template="/WEB-INF/pages/UserInfoRegister.jsp"/>
+<definition name="RegistrationSuccess" template="/WEB-INF/pages/RegistrationSuccess.jsp"/>
 </tiles-definitions>

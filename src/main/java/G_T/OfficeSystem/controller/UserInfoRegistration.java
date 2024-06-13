@@ -25,7 +25,7 @@ public class UserInfoRegistration {
     private UserInfoModel_hi_Service userService;
 
     // ユーザー情報登録画面の表示
-    @RequestMapping(value = "/UserInfoRegister", method = RequestMethod.GET)
+    @RequestMapping(value = "/UserInfoRegistration", method = RequestMethod.GET)
     public String UserInfoRegister() {
         // UserInfoRegister.jspファイルを返して、ユーザー情報登録画面を表示
         return "UserInfoRegister";
@@ -70,7 +70,7 @@ public class UserInfoRegistration {
         user.setLastlogindate(formattedTimestamp); // フォーマットされたタイムスタンプを設定
 
         user.setRegisterLinkTime(new Timestamp(System.currentTimeMillis())); // 登録リンクタイムの設定
-        user.setType("1"); // ユーザータイプを設定
+        user.setType(1); // ユーザータイプを設定
 
         // HibProfileInfoModelオブジェクトの作成
         HibProfileInfoModel profile = new HibProfileInfoModel();

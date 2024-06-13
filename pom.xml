@@ -2,8 +2,9 @@
 <modelVersion>4.0.0</modelVersion>
 <groupId>G_T.springmvc</groupId>
 <artifactId>OfficeSystem_Hibernate11</artifactId>
-<packaging>war</packaging>
 <version>0.0.1-SNAPSHOT</version>
+<packaging>war</packaging>
+<!--  パッケージタイプを war に設定  -->
 <name>OfficeSystem Maven Webapp</name>
 <url>http://maven.apache.org</url>
 <properties>
@@ -18,7 +19,7 @@
 <scope>test</scope>
 </dependency>
 <!--  Servlet Library  -->
-<!--  http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api%20 -->
+<!--  http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api%20  -->
 <dependency>
 <groupId>javax.servlet</groupId>
 <artifactId>javax.servlet-api</artifactId>
@@ -32,19 +33,19 @@
 <scope>provided</scope>
 </dependency>
 <!--  Spring dependencies  -->
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-core%20 -->
+<!--  http://mvnrepository.com/artifact/org.springframework/spring-core%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-core</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-web%20 -->
+<!--  http://mvnrepository.com/artifact/org.springframework/spring-web%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-web</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-webmvc%20 -->
+<!--  http://mvnrepository.com/artifact/org.springframework/spring-webmvc%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-webmvc</artifactId>
@@ -98,17 +99,55 @@
 <artifactId>tiles-jsp</artifactId>
 <version>3.0.7</version>
 </dependency>
+<!--  SLF4J API  -->
+<!--  <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-api</artifactId> 
+   <version>1.7.32</version> </dependency>  -->
+<!--  Hibernate Core  -->
 <dependency>
 <groupId>org.hibernate</groupId>
 <artifactId>hibernate-core</artifactId>
 <version>4.3.5.Final</version>
 </dependency>
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-simple</artifactId>
+<version>1.7.32</version>
+</dependency>
+<!--  json形式でデータを送る際に使用するライブラリ  -->
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.11.0</version>
+</dependency>
+<!--  SLF4J Simple Binding (簡易ログ)  -->
 </dependencies>
 <build>
 <finalName>OfficeSystem</finalName>
 <plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-resources-plugin</artifactId>
+<version>3.2.0</version>
+<!--  最新の安定版バージョンを使用  -->
+<executions>
+<execution>
+<id>default-resources</id>
+<phase>process-resources</phase>
+<goals>
+<goal>resources</goal>
+</goals>
+</execution>
+<execution>
+<id>default-testResources</id>
+<phase>process-test-resources</phase>
+<goals>
+<goal>testResources</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
 <!--  Config: Maven Tomcat Plugin  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin%20 -->
+<!--  http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin%20  -->
 <plugin>
 <groupId>org.apache.tomcat.maven</groupId>
 <artifactId>tomcat7-maven-plugin</artifactId>
