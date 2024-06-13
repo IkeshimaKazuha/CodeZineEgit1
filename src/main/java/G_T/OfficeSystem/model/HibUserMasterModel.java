@@ -11,7 +11,7 @@ public class HibUserMasterModel {
  private String lastlogindate;      
  private String registerLink;      
  private Timestamp registerLinkTime;      
- private String type;      
+ private Integer type;      
  private HibProfileInfoModel hibProfileInfoModel;    
        
  public HibUserMasterModel() {      
@@ -27,7 +27,7 @@ public class HibUserMasterModel {
    String lastlogindate,    
    String registerLink,    
    Timestamp registerLinkTime,    
-   String type,    
+   Integer type,    
    HibProfileInfoModel hibProfileInfoModel) {    
        
   this.userId = userId;     
@@ -106,11 +106,11 @@ public class HibUserMasterModel {
   this.registerLinkTime = registerLinkTime;     
  }      
        
- public String getType() {      
+ public Integer getType() {      
   return type;     
  }      
        
- public void setType(String type) {      
+ public void setType(Integer type) {      
   this.type = type;     
  }      
        

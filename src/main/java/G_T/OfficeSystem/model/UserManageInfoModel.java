@@ -10,7 +10,7 @@ public class UserManageInfoModel {
 	private String userId;
 	private String password;
 	private String email;
-	private String type;
+	private Integer type;
 	private Timestamp lastlogindate;
 	private String registerLink;
 	private Timestamp registerLinkTime;
@@ -45,7 +45,7 @@ public class UserManageInfoModel {
 			String userId,
 			String password,
 			String email,
-			String type,
+			Integer type,
 			Timestamp lastlogindate,
 			String registerLink,
 			Timestamp registerLinkTime,
@@ -106,10 +106,10 @@ public class UserManageInfoModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 	public Timestamp getLastlogindate() {
