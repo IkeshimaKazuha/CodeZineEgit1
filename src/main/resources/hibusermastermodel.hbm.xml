@@ -1,42 +1,40 @@
-<?xml version="1.0"?>            
-<!DOCTYPE hibernate-mapping PUBLIC            
- "-//Hibernate/Hibernate Mapping DTD 3.0//EN"      
- "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">           
-            
-<hibernate-mapping>            
- <!-- モデルとテーブルのマッピングの設定 -->           
- <class name="G_T.OfficeSystem.model.HibUserMasterModel" table="user_master">           
-  <!-- プライマリーキーの設定 -->          
-            
-            
-  <id name="userId" type="string">          
-   <column name="user_id" />         
-  </id>          
-  <property name="password" type="string">          
-   <column name="password" />         
-  </property>          
-  <property name="email" type="string">          
-   <column name="email" />         
-  </property>          
-  <property name="updatetime" type="timestamp">          
-   <column name="updatetime" />         
-  </property>          
-  <property name="inserttime" type="timestamp">          
-   <column name="inserttime" />         
-  </property>          
-  <property name="lastlogindate" type="string">          
-   <column name="lastlogindate" />         
-  </property>          
-  <property name="registerLink" type="string">          
-   <column name="register_link" />         
-  </property>          
-  <property name="registerLinkTime" type="timestamp">          
-   <column name="register_link_time" />         
-  </property>          
-  <property name="type" type="int">          
-   <column name="type" />         
-  </property>          
-  <!-- 結合するテーブルとの関係とそのテーブルの設定 -->          
-  <one-to-one name="hibProfileInfoModel" class="G_T.OfficeSystem.model.HibProfileInfoModel" />        
- </class>           
-</hibernate-mapping>            
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!--  モデルとテーブルのマッピングの設定  -->
+<class name="G_T.OfficeSystem.model.HibUserMasterModel" table="user_master">
+<!--  プライマリーキーの設定  -->
+<id name="userId" type="string">
+<column name="user_id"/>
+</id>
+<property name="password" type="string">
+<column name="password"/>
+</property>
+<property name="email" type="string">
+<column name="email"/>
+</property>
+<property name="updatetime" type="timestamp">
+<column name="updatetime"/>
+</property>
+<property name="inserttime" type="timestamp">
+<column name="inserttime"/>
+</property>
+<property name="lastlogindate" type="string">
+<column name="lastlogindate"/>
+</property>
+<property name="registerLink" type="string">
+<column name="register_link"/>
+</property>
+<property name="registerLinkTime" type="timestamp">
+<column name="register_link_time"/>
+</property>
+<property name="type" type="int">
+<column name="type"/>
+</property>
+<!--  結合するテーブルとの関係とそのテーブルの設定  -->
+<one-to-one name="hibProfileInfoModel"
+ class="G_T.OfficeSystem.model.HibProfileInfoModel" cascade="all"/>
+</class>
+</hibernate-mapping>

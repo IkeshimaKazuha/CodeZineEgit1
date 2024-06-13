@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 import org.springframework.jdbc.core.RowMapper;      
       
-public class UserInfoModelMapper implements RowMapper<UserInfoModel> {      
+public class UserManageInfoModelMapper implements RowMapper<UserManageInfoModel> {      
  public static final String BASE_SQL = "Select u.USER_ID," +      
    "u.PASSWORD," +    
    "u.EMAIL," +    
@@ -33,14 +33,14 @@ public class UserInfoModelMapper implements RowMapper<UserInfoModel> {
    "where 1=1";   
       
  @Override     
- public UserInfoModel mapRow(ResultSet rs, int rowNum) throws SQLException {     
+ public UserManageInfoModel mapRow(ResultSet rs, int rowNum) throws SQLException {     
   String userId = rs.getString("USER_ID");    
   String password = rs.getString("PASSWORD");    
   String email = rs.getString("EMAIL");    
   Timestamp lastlogindate = rs.getTimestamp("LASTLOGINDATE");    
   String registerLink = rs.getString("REGISTER_LINK");    
   Timestamp registerLinkTime = rs.getTimestamp("REGISTER_LINK_TIME");    
-  String type = rs.getString("TYPE");    
+  Integer type = rs.getInt("TYPE");    
   String nickName = rs.getString("NICK_NAME");    
   String userName = rs.getString("USER_NAME");    
   String birthday = rs.getString("BIRTHDAY");    
@@ -56,14 +56,14 @@ public class UserInfoModelMapper implements RowMapper<UserInfoModel> {
   String comment = rs.getString("COMMENT");    
   String imageLink = rs.getString("IMAGE_LINK");    
       
-  return new UserInfoModel(    
+  return new UserManageInfoModel(    
     userId,  
     password,  
     email,  
+    type,  
     lastlogindate,  
     registerLink,  
     registerLinkTime,  
-    type,  
     nickName,  
     userName,  
     birthday,  
