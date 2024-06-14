@@ -17,8 +17,8 @@
 <version>3.8.1</version>
 <scope>test</scope>
 </dependency>
-<!--  Servlet Library  -->
-<!--  http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api%20 -->
+<!--   Servlet Library   -->
+<!--   http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api%20  -->
 <dependency>
 <groupId>javax.servlet</groupId>
 <artifactId>javax.servlet-api</artifactId>
@@ -31,68 +31,68 @@
 <version>2.1</version>
 <scope>provided</scope>
 </dependency>
-<!--  Spring dependencies  -->
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-core%20 -->
+<!--   Spring dependencies   -->
+<!--   http://mvnrepository.com/artifact/org.springframework/spring-core%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-core</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-web%20 -->
+<!--   http://mvnrepository.com/artifact/org.springframework/spring-web%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-web</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-webmvc%20 -->
+<!--   http://mvnrepository.com/artifact/org.springframework/spring-webmvc%20  -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-webmvc</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  JSTL  -->
+<!--   JSTL   -->
 <dependency>
 <groupId>javax.servlet</groupId>
 <artifactId>jstl</artifactId>
 <version>1.2</version>
 </dependency>
-<!--  http://mvnrepository.com/artifact/org.springframework/spring-jdbc  -->
+<!--   http://mvnrepository.com/artifact/org.springframework/spring-jdbc   -->
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-jdbc</artifactId>
 <version>4.3.1.RELEASE</version>
 </dependency>
-<!--  MySQL JDBC driver  -->
-<!--  http://mvnrepository.com/artifact/mysql/mysql-connector-java  -->
+<!--   MySQL JDBC driver   -->
+<!--   http://mvnrepository.com/artifact/mysql/mysql-connector-java   -->
 <dependency>
 <groupId>mysql</groupId>
 <artifactId>mysql-connector-java</artifactId>
 <version>8.0.33</version>
 </dependency>
-<!--  PartialView  -->
-<!--  Tiles API  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tiles/tiles-api  -->
+<!--   PartialView   -->
+<!--   Tiles API   -->
+<!--   http://mvnrepository.com/artifact/org.apache.tiles/tiles-api   -->
 <dependency>
 <groupId>org.apache.tiles</groupId>
 <artifactId>tiles-api</artifactId>
 <version>3.0.7</version>
 </dependency>
-<!--  Tiles Core  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tiles/tiles-core  -->
+<!--   Tiles Core   -->
+<!--   http://mvnrepository.com/artifact/org.apache.tiles/tiles-core   -->
 <dependency>
 <groupId>org.apache.tiles</groupId>
 <artifactId>tiles-core</artifactId>
 <version>3.0.7</version>
 </dependency>
-<!--  Tiles Servlet  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet  -->
+<!--   Tiles Servlet   -->
+<!--   http://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet   -->
 <dependency>
 <groupId>org.apache.tiles</groupId>
 <artifactId>tiles-servlet</artifactId>
 <version>3.0.7</version>
 </dependency>
-<!--  Tiles JSP  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp  -->
+<!--   Tiles JSP   -->
+<!--   http://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp   -->
 <dependency>
 <groupId>org.apache.tiles</groupId>
 <artifactId>tiles-jsp</artifactId>
@@ -103,12 +103,18 @@
 <artifactId>hibernate-core</artifactId>
 <version>4.3.5.Final</version>
 </dependency>
+<!--  json形式でデータを送る際に使用するライブラリ  -->
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.11.0</version>
+</dependency>
 </dependencies>
 <build>
 <finalName>OfficeSystem</finalName>
 <plugins>
-<!--  Config: Maven Tomcat Plugin  -->
-<!--  http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin%20 -->
+<!--   Config: Maven Tomcat Plugin   -->
+<!--   http://mvnrepository.com/artifact/org.apache.tomcat.maven/tomcat7-maven-plugin%20  -->
 <plugin>
 <groupId>org.apache.tomcat.maven</groupId>
 <artifactId>tomcat7-maven-plugin</artifactId>

@@ -1,0 +1,129 @@
+﻿* {
+    font-family:'MS Mincho','MS PMincho','MS Gothic','MS PGothic', Arial, Helvetica, sans-serif;
+}
+
+body, html {
+    height:100%;
+    background-color:#e9ebee;
+}
+
+body {
+	height:auto;
+    margin:8px;
+}
+
+.TOPBAR
+{
+	width:100%; /* 幅：全画面 */
+	min-width:1000px;
+	height:50px; /* 高さ：50px */
+	background-color:#5B9BD5; /* 背景色：#5B9BD5 */
+	color:white; /* テキスト色：ホワイト */
+	font-size:24px; /* フォントサイズ：24px */
+	font-weight:bold; /* フォントの太さ：太 */
+	text-align:center; /* テキストの位置：トップバーの中央 */
+	display:flex; /* テキストの位置：トップバーの中央 */
+	justify-content:center; /* テキストの位置：トップバーの中央 */  
+	align-items:center; /* テキストの位置：トップバーの中央 */
+	margin-bottom:8px;/* 白色背景枠との間の幅：8px */
+}
+
+.TITLE {
+    font-size:24px;
+    font-weight:bold;
+}
+
+.TEXTBOX {
+    color:#494949;
+    border:1px solid #69A4D8;
+    border-radius:5px;
+    height:30px;
+    font-size:18px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+.TEXTAREA {
+    color:#494949;
+    border:1px solid #69A4D8;
+    border-radius:5px;
+    font-size:18px;
+    padding-left:5px;
+    padding-right:5px;
+    resize:none;
+}
+
+.BUTTON {
+    background-color:#5B9BD5;
+    color:white;
+    border:1px solid #43729D;
+    border-radius:5px;
+    height:36px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.BUTTONDISABLE {
+    background-color:#dddddd;
+    color:white;
+    border:1px solid #cccccc;
+    border-radius:5px;
+    height:36px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.BUTTONDISABLE:hover {
+    cursor:pointer;
+}
+
+.LABEL {
+    color:#494949;
+    font-size:18px;
+    text-align:left;
+}
+
+.SELECT {
+    color:#494949;
+    border:1px solid #69A4D8;
+    border-radius:5px;
+    height:30px;
+    font-size:18px;
+}
+
+.TITLELINE {
+    border-bottom:3px solid #5B9BD5;
+    width:100%;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.TEXTBOX:focus, .TEXTAREA:focus, .SELECT:focus {
+	outline:none !important;
+	border-color:red;
+	box-shadow:0 0 5px #ce7171;
+}
+
+.BUTTON:hover {
+	cursor:pointer;
+}
+
+.BUTTON:focus {
+	outline:none !important;
+	border-color:#43729D;
+	box-shadow:0 0 5px #608db8;
+}
+
+tr {
+    height:35px;
+    font-size:18px;
+}
+
+td {
+    text-align:left;
+    width:auto;
+}
+
+a {
+    font-size:18px;
+}
