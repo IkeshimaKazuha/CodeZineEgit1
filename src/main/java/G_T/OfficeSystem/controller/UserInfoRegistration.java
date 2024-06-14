@@ -96,7 +96,7 @@ public class UserInfoRegistration {
         userService.saveUser(user, profile);
 
         // 成功した場合のリダイレクトURLを設定
-        response.put("redirectUrl", "/OfficeSystem/RegistrationSuccess");
+        response.put("redirectUrl", "/OfficeSystem_Hibernate11/RegistrationSuccess");
         return response;
     }
 }
