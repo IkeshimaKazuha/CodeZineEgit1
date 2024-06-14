@@ -18,7 +18,7 @@ public class UserinfoRegistrationConditionModel {
 	    private String specialSkill;
 	    private String comment;
 
-	    // ゲッターとセッター
+	    // ゲッターとセッターｐ
 	    public String getUserId() {
 	        return userId;
 	    }
