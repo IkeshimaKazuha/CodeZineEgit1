@@ -37,6 +37,16 @@ td {
 	background-color: white; /* 背景色：ホワイト */
 }
 
+.LeftMenu {
+        width: 200px;
+        height: 100vh;
+        background-color: #ffffff;
+        color: white;
+        position: fixed;
+        top: 60px;
+        padding: 10px;
+        z-index: 90;
+      }
 
 </style>
 </head>
@@ -89,6 +99,8 @@ td {
                 <div class="TITLELINE"></div>
             </div>
         </div>
+
+</div>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-3">ニックネーム</div>
@@ -514,13 +526,12 @@ td {
                 <input type="button" class="BUTTON" value="登録" style="width: 180px" onclick="submitForm()">
             </div>
             <div class="col-4">
-                <input type="button" class="BUTTON" value="キャンセル" style="width: 180px;">
+                <input type="button" class="BUTTON" id="btnキャンセル" value="キャンセル" style="width: 180px;" onclick="Login()">
             </div>
             <div class="col-2"></div>
         </div>
     </div>
 </div>
-    
 
   <script>
     function submitForm() {
@@ -611,6 +622,11 @@ td {
             }
         });
     }
+
+function Login(){
+    location.href = "http://localhost:8080/OfficeSystem_Hibernate11/Login";
+}
+    
 </script>
 
 

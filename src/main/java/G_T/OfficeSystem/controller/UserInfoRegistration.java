@@ -99,4 +99,7 @@ public class UserInfoRegistration {
         response.put("redirectUrl", "/OfficeSystem_Hibernate11/RegistrationSuccess");
         return response;
     }
+    
+
+    
 }
